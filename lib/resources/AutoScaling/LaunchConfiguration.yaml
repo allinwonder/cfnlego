@@ -1,0 +1,157 @@
+AWS::AutoScaling::LaunchConfiguration:
+  Attributes:
+    CreationPolicy:
+      ResourceSignal: |
+        { "Count" => 2, "Timeout" => "PT15M" }
+    Metadata:
+      AWS::CloudFormation::Init: |
+        {
+          "configSets" => {
+              "ascending"  => [ "config1" , "config2" ],
+              "descending" => [ "config2" , "config1" ]
+          },
+          "config1" => {
+              "commands" => {
+                  "test" => {
+                      "command" => "echo \"$CFNTEST\" > test.txt",
+                      "env" => { "CFNTEST" => "I come from config1." },
+                      "cwd" => "~"
+                  }
+              }
+          },
+          "config2" => {
+            "packages" => {
+              "rpm" => {
+                "epel" => "http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm"
+              },
+              "yum" => {
+                "httpd"     => [],
+                "php"       => [],
+                "wordpress" => []
+              },
+              "rubygems" => {
+                "chef" => [ "0.10.2" ]
+              },
+              "msi" => {
+                "awscli" => "https://s3.amazonaws.com/aws-cli/AWSCLI64.msi"
+              }
+            },
+            "groups" => {
+              "groupOne" => {},
+              "groupTwo" => { "gid" => "45" }
+            },
+            "users" => {
+              "myUser" => {
+                  "groups"  => ["groupOne", "groupTwo"],
+                  "uid"     => "50",
+                  "homeDir" => "/tmp"
+              }
+            },
+            "sources" => {
+              "/etc/puppet" => "https://github.com/user1/cfn-demo/tarball/master"
+            },
+            "files" => {
+              "/tmp/myfile2.txt" => {
+                "content" => "/tmp/myfile1.txt",
+                "mode"    => "000644",
+                "owner"   => "root",
+                "group"   => "root"
+              },
+              "/etc/cfn/hooks.d/cfn-auto-reloader.conf" => {
+                "content" => FnJoin("", [
+                  "[cfn-auto-reloader-hook]\n",
+                  "triggers=post.update\n",
+                  "path=Resources.YOUR-RESOURCE-LOGICAL-NAME.Metadata.AWS::CloudFormation::Init\n",
+                  "action=/opt/aws/bin/cfn-init -v ",
+                          "         --stack ", Ref("AWS::StackName"),
+                          "         --resource WebServer ",
+                          "         --configsets wordpress_install ",
+                          "         --region ", Ref("AWS::Region"), "\n"
+                ]),          
+                "mode"  => "000400",
+                "owner" => "root",
+                "group" => "root"
+              }
+            },
+            "commands" => {
+              "test" => {
+                  "command"      => "echo \"$MAGIC\" > test.txt",
+                  "env"          => { "MAGIC"                     => "I come from the environment!" },
+                  "cwd"          => "~",
+                  "test"         => "test ! -e ~/test.txt",
+                  "ignoreErrors" => "false"
+              } 
+            },
+            "services" => {
+              "sysvinit" => {
+                "nginx" => {
+                  "enabled"       => "true",
+                  "ensureRunning" => "true",
+                  "files"         => ["/etc/nginx/nginx.conf"],
+                  "sources"       => ["/var/www/html"]
+                },
+                "php-fastcgi" => {
+                  "enabled"       => "true",
+                  "ensureRunning" => "true",
+                  "packages"      => { "yum" => ["php", "spawn-fcgi"] }
+                },
+                "sendmail" => {
+                  "enabled"       => "false",
+                  "ensureRunning" => "false"
+                }
+              },
+              "windows" => {
+                "cfn-hup" => {
+                  "enabled"       => "true",
+                  "ensureRunning" => "true",
+                  "files"         => ["c=>\\cfn\\cfn-hup.conf", "c=>\\cfn\\hooks.d\\cfn-auto-reloader.conf"]
+                }
+              }
+            }
+          }
+        } 
+  Properties:
+    AssociatePublicIpAddress: false
+    BlockDeviceMappings: |
+      [{
+        "DeviceName"  => "/dev/sdf",
+        "Ebs"         => {
+          "DeleteOnTermination" => "false",
+          "Iops"                => "1000",
+          "SnapshotId"          => "snap-xxxx",
+          "VolumeSize"          => "100",
+          "VolumeType"          => "standard"
+        },
+        "NoDevice"    => "false",
+        "VirtualName" => "ephemeralX" 
+      }]
+    ClassicLinkVPCId: "\"vpc-xxxxx\""
+    ClassicLinkVPCSecurityGroups: ["sg-xxx", "sg-xxx"]
+    EbsOptimized: "\"false\""
+    IamInstanceProfile: Ref("InstanceProfile")
+    ImageId: "\"ami-xxxxx\""
+    InstanceId: Ref("Instance")
+    InstanceMonitoring: "\"true\""
+    InstanceType: "\"t2.micro\""
+    KernelId: "\"kn-xxx\""
+    KeyName: "\"your-ssh-key\""
+    PlacementTenancy: "\"dedicated - delete me if you are not using dedicated HW\""
+    RamDiskId: "\"ram-xxx\""
+    SecurityGroups: |
+      [ Ref("SecurityGroup") ]
+    SpotPrice: "\"0.02\""
+    UserData: |
+      FnJoin("", [
+      "#!/bin/bash\n",
+      "# Default UserData for linux\n",
+      "yum update --security\n",
+      "/opt/aws/bin/cfn-init -v ",
+      "         --stack ", Ref("AWS::StackName"),
+      "         --resource LaunchConfig ",
+      "         --configsets default ",
+      "         --region ", Ref("AWS::Region"), "\n",
+      "/opt/aws/bin/cfn-signal -e $? ",
+      "         --stack ", Ref("AWS::StackName"),
+      "         --resource ASG",
+      "         --region ", Ref("AWS::Region"), "\n"
+      ])

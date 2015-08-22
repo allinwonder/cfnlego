@@ -1,0 +1,42 @@
+AWS::AutoScaling::AutoScalingGroup:
+  Attributes:
+    UpdatePolicy:
+      AutoScalingRollingUpdate: |
+        {
+          "MaxBatchSize" => "1",
+          "MinInstancesInService" => "1",
+          "PauseTime" => "300",
+          "SuspendProcesses" => ["Launch", "Terminate", "HealthCheck", "ReplaceUnhealthy", "AZRebalance", "AlarmNotification", "ScheduledActions", "AddToLoadBalancer"]
+          "WaitOnResourceSignals" => true
+        }
+      AutoScalingScheduledAction: "{ \"IgnoreUnmodifiedGroupSizeProperties\" => true }"
+  Properties:
+     AvailabilityZones: ["ap-southeast-2a", "ap-southeast-2b"]
+     Cooldown: "300"
+     DesiredCapacity: "2"
+     HealthCheckGracePeriod: "300"
+     HealthCheckType: "\"ELB\""
+     InstanceId: "\"i-xxxxxx\""
+     LaunchConfigurationName: Ref("LaunchConfiguration")
+     LoadBalancerNames: Ref("LoadBalancer")
+     MaxSize: "2"
+     MetricsCollection: |
+       {
+         "Granularity" => "1Minute",
+         "Metrics" => [] //all metrics will be sent to cloudwatch by default
+       }
+     MinSize: "1"
+     NotificationConfigurations: | 
+       {
+          "NotificationTypes" => [ "autoscaling:EC2_INSTANCE_LAUNCH", "autoscaling:EC2_INSTANCE_LAUNCH_ERROR", "autoscaling:EC2_INSTANCE_TERMINATE", "autoscaling:EC2_INSTANCE_TERMINATE_ERROR", "autoscaling:TEST_NOTIFICATION" ],
+          "TopicARN" => "arn:aws:::xxxx"
+       }
+     PlacementGroup: "\"placement group name\""
+     Tags: |
+       {
+         "Key" => "Application",
+         "Value" => "",
+         "PropagateAtLaunch" => true
+       }     
+     TerminationPolicies: ["OldestInstance", "NewestInstance", "OldestLaunchConfiguration", "ClosestToNextInstanceHour", "Default"]
+     VPCZoneIdentifier: ["subnet-xxxx", "subnet-xxxx"]

@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+require './lib/cfn-lego'
+require 'optparse'
+options = {resources: []}
+OptionParser.new do |opts|
+  opts.banner = "Usage: cfn-lego --reousrce resource [options]"
+
+  opts.on("-r", "--resource=RESOURCE_TYPE,RESOURCE_LOGICAL_NAME", "Add resource type and logical name") do |r|
+    options[:resources] << r
+  end
+
+  opts.on("-h", "--help", "Prints this help") do
+    puts opts
+    puts <<-EXAMPLE
+Example:
+  cfn-lego                                          \\
+    --reousrce AutoScaling::AutoScalingGroup,ASG    \\
+    --reousrce IAM::Role,Role                       \\
+    --reousrce IAM::InstanceProfile,InstanceProfile \\
+EXAMPLE
+
+    exit
+  end
+end.parse!
+
+# Constructure Resources
+resources = []
+options[:resources].each do |r|
+  /(.*),(.*)/.match(r) do |m|
+    type = m[1]
+    name = m[2]
+    resources << Resource.new(type, name)
+  end
+end
+
+puts CloudFormation.new(resources).render

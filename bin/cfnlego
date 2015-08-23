@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require './lib/cfn-lego'
+require_relative '../lib/cfnlego'
 require 'optparse'
 options = {resources: []}
 OptionParser.new do |opts|
@@ -29,8 +29,8 @@ options[:resources].each do |r|
   /(.*),(.*)/.match(r) do |m|
     type = m[1]
     name = m[2]
-    resources << Resource.new(type, name)
+    resources << Cfnlego::Resource.new(type, name)
   end
 end
 
-puts CloudFormation.new(resources).render
+puts Cfnlego::CloudFormation.new(resources).render

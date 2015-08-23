@@ -1,4 +1,4 @@
-cfn-lego
+cfnlego
 ========
 
 ### description

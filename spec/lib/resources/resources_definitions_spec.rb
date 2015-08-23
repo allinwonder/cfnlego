@@ -63,5 +63,17 @@ describe "resource definitions" do
     let(:logical_name) { "Function" }
     it_behaves_like "general definition"
   end
+
+  describe "SNS/Topic.yaml" do
+    let(:type) { "SNS::Topic" }
+    let(:logical_name) { "Topic" }
+    it_behaves_like "general definition"
+  end
+
+  describe "SNS/TopicPolicy.yaml" do
+    let(:type) { "SNS::TopicPolicy" }
+    let(:logical_name) { "TopicPolicy" }
+    it_behaves_like "general definition"
+  end
 end
 

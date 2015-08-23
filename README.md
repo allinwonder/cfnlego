@@ -1,6 +1,8 @@
 cfnlego
 ========
 
+[![Build Status](https://travis-ci.org/allinwonder/cfnlego.svg)](https://travis-ci.org/allinwonder/cfnlego)
+
 ### Description
 
 cfnlego is built to quickly bootstrap CloudFormation development with cfndsl.

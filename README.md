@@ -12,7 +12,9 @@ It provides templates for all AWS Resources and simpliy bake them into a templat
 to generate a `cfndsl` template, provide the resource types and their logical names in the command line.
 
 ```sh
-bundle exec cfnlego --help
+$ gem install cfnlego
+
+$ cfnlego --help
 Usage: cfnlego --reousrce resource [options]
     -r RESOURCE_TYPE,RESOURCE_LOGICAL_NAME
         --resource                   Add resource type and logical name

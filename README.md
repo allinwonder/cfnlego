@@ -1,11 +1,11 @@
 cfnlego
 ========
 
-### description
+### Description
 
 cfnlego is built to quickly bootstrap CloudFormation development with cfndsl.
 
-It provides templates for all AWS Resources and simpliy bake them into a template
+It provides templates for all AWS Resources and simply bake them into a template
 
 ### How to use
 

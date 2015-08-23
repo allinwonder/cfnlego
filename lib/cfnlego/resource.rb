@@ -26,6 +26,8 @@ module  Cfnlego
 
     def definition
       @definition ||= YAML.load_file(type2file)
+    rescue
+      $stderr.puts "unknown #{@type}, no matching definition found"
     end
   end
 end

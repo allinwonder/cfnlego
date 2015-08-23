@@ -3,7 +3,7 @@ require_relative '../lib/cfnlego'
 require 'optparse'
 options = {resources: []}
 OptionParser.new do |opts|
-  opts.banner = "Usage: cfn-lego --reousrce resource [options]"
+  opts.banner = "Usage: cfnlego --reousrce resource [options]"
 
   opts.on("-r", "--resource=RESOURCE_TYPE,RESOURCE_LOGICAL_NAME", "Add resource type and logical name") do |r|
     options[:resources] << r
@@ -13,7 +13,7 @@ OptionParser.new do |opts|
     puts opts
     puts <<-EXAMPLE
 Example:
-  cfn-lego                                          \\
+  cfnlego                                           \\
     --reousrce AutoScaling::AutoScalingGroup,ASG    \\
     --reousrce IAM::Role,Role                       \\
     --reousrce IAM::InstanceProfile,InstanceProfile \\

@@ -128,9 +128,9 @@ AWS::AutoScaling::LaunchConfiguration:
     ClassicLinkVPCId: "\"vpc-xxxxx\""
     ClassicLinkVPCSecurityGroups: ["sg-xxx", "sg-xxx"]
     EbsOptimized: "\"false\""
-    IamInstanceProfile: Ref("InstanceProfile")
+    IamInstanceProfile: "\"instance-profile-xxxxxx\"" #Ref("InstanceProfile")
     ImageId: "\"ami-xxxxx\""
-    InstanceId: Ref("Instance")
+    InstanceId: "\"i-xxxxxxx\"" # Ref("Instance")
     InstanceMonitoring: "\"true\""
     InstanceType: "\"t2.micro\""
     KernelId: "\"kn-xxx\""
@@ -138,7 +138,7 @@ AWS::AutoScaling::LaunchConfiguration:
     PlacementTenancy: "\"dedicated - delete me if you are not using dedicated HW\""
     RamDiskId: "\"ram-xxx\""
     SecurityGroups: |
-      [ Ref("SecurityGroup") ]
+      [ "sg-xxxxxx" ] # [ Ref("SecurityGroup") ]
     SpotPrice: "\"0.02\""
     UserData: |
       FnJoin("", [

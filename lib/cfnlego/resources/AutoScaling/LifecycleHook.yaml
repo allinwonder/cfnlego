@@ -1,10 +1,10 @@
 AWS::AutoScaling::LifecycleHook:
   Attributes:
   Properties:
-    AutoScalingGroupName: Ref("ASG")
+    AutoScalingGroupName: "\"asg-xxx\"" #Ref("ASG")
     DefaultResult: "\"CONTINUE or ABANDON\""
-    HeartbeatTimeout: "120 (unit is econd)" 
-    LifecycleTransition: "autoscaling:EC2_INSTANCE_TERMINATING | autoscaling:EC2_INSTANCE_LAUNCHING"
-    NotificationMetadata: "good to put your application name"
+    HeartbeatTimeout: "\"120 (unit is econd)\""
+    LifecycleTransition: "\"autoscaling:EC2_INSTANCE_TERMINATING or autoscaling:EC2_INSTANCE_LAUNCHING\""
+    NotificationMetadata: "\"good to put your application name\""
     NotificationTargetARN: "\"arn:aws:: - SNS to receive lifecycle hook notification\""
-    RoleARN: "arn:aws:iam:... The IAM role that allows the Auto Scaling group to publish to the specified notification target."
+    RoleARN: "\"arn:aws:iam:... The IAM role that allows the Auto Scaling group to publish to the specified notification target.\""

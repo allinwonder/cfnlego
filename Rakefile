@@ -1,6 +1,6 @@
-namespace :cfn2dsl do
+namespace :cfnlego do
   task :build do
-    `gem build cfn2dsl.gemspec`
+    `gem build cfnlego.gemspec`
   end
 
   task :install do

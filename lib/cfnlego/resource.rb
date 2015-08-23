@@ -21,7 +21,7 @@ module  Cfnlego
 
     # example AutoScaling::AutoScalingGroup
     def type2file
-      @file ||= "#{File.dirname(__FILE__)}/resources/#{@type.gsub(/::/, "/")}.yaml"
+      @file ||= "#{File.realpath(File.dirname(__FILE__))}/resources/#{@type.gsub(/::/, "/")}.yaml"
     end
 
     def definition

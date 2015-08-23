@@ -1,0 +1,21 @@
+AWS::CloudWatch::Alarm:
+  Properties:
+    ActionsEnabled: "\"true\""
+    AlarmActions: ["arn:aws::xxxxx"] # [ Ref("SNS"), Ref("Lambda") ]
+    AlarmDescription: "\"it creates noise by save your life\""
+    AlarmName: "\"alarm_name\""
+    ComparisonOperator: "\"GreaterThanOrEqualToThreshold | GreaterThanThreshold | LessThanThreshold | LessThanOrEqualToThreshold\""
+    Dimensions: |
+      [{
+         "Name"  => "AutoScalingGroupName",
+         "Value" => "WebServer" # Ref("WebSever")
+      }]
+    EvaluationPeriods: "\"1\""
+    InsufficientDataActions: ["arn:aws::xxxxx"]
+    MetricName: "\"CPUUtilization\""
+    Namespace: "\"AWS/EC2\""
+    OKActions: ["arn:aws::xxxx"]
+    Period: "\"60 #  multiple of 60\""
+    Statistic: "\"SampleCount | Average | Sum | Minimum | Maximumi\""
+    Threshold: "\"90\""
+    Unit: "\" Seconds | Microseconds | Milliseconds | Bytes | Kilobytes | Megabytes | Gigabytes | Terabytes | Bits | Kilobits | Megabits | Gigabits | Terabits | Percent | Count | Bytes/Second | Kilobytes/Second | Megabytes/Second | Gigabytes/Second | Terabytes/Second | Bits/Second | Kilobits/Second | Megabits/Second | Gigabits/Second | Terabits/Second | Count/Second | None\""

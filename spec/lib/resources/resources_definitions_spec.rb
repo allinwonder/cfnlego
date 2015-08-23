@@ -50,7 +50,18 @@ describe "resource definitions" do
     let(:type) { "IAM::InstanceProfile" }
     let(:logical_name) { "InstanceProfile" }
     it_behaves_like "general definition"
+  end
 
+  describe "CloudWatch/Alarm.yaml" do
+    let(:type) { "CloudWatch::Alarm" }
+    let(:logical_name) { "Alarm" }
+    it_behaves_like "general definition"
+  end
+
+  describe "Lambda/Function.yaml" do
+    let(:type) { "Lambda::Function" }
+    let(:logical_name) { "Function" }
+    it_behaves_like "general definition"
   end
 end
 

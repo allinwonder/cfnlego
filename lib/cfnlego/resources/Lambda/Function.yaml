@@ -1,0 +1,14 @@
+AWS::Lambda::Function:
+  Properties: 
+    Code: |
+      {
+        "S3Bucket" => "bucket_name",
+        "S3Key"    => "object name",
+        "S3ObjectVersion" => "well, how about use your own versioning to make it more explicit then using s3's versioning for deployment"
+      }
+    Description: "\"Function description\""
+    Handler: "\"index.handler # Entry porint of the lambda function\""
+    MemorySize: "\" #in MB, default 128MB\""
+    Role: "\"arn:aws:iam:role:xxxx # role that Lambda assumes when it runs your code to access AWS\""
+    Runtime: "\"nodejs\""
+    Timeout: "\"30 #The function execution time (in seconds) after which Lambda terminates the function. default is 3\""

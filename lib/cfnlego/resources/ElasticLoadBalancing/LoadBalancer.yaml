@@ -1,0 +1,128 @@
+AWS::ElasticLoadBalancing::LoadBalancer:
+  Properties: 
+    AccessLoggingPolicy: |
+      {
+        "EmitInterval"   => 15,
+        "Enabled"        => true,
+        "S3BucketName"   => "Bucket Name",
+        "S3BucketPrefix" => "my-load-balancer-logs/prod"
+      }
+    AppCookieStickinessPolicy: |
+      [
+       {
+         "CookieName" => "Name of the application cookie used for stickiness",
+         "PolicyName" => "The name of the policy being created. The name must be unique within the set of policies for this Load Balancer."
+        } 
+      ]     
+    AvailabilityZones: |
+      [ 
+        "The Availability Zones in which to create the load balancer. ",
+        "You can specify the AvailabilityZones or Subnets property, but not both." 
+      ]
+    ConnectionDrainingPolicy: |
+      {
+         "Enabled" => true,
+         "Timeout" => 60
+      }
+    ConnectionSettings: |
+      {
+         "IdleTimeout" => "60"
+      }
+    CrossZone: true
+    HealthCheck: |
+      {
+         "HealthyThreshold"   => 3,
+         "Interval"           => 10,
+         "Target"             => "HTTP:80/",
+         "Timeout"            => "10",
+         "UnhealthyThreshold" => "5"
+      }
+    Instances: |
+      ["i-xxxxxx"]
+    LBCookieStickinessPolicy: |
+      [
+        {
+           "CookieExpirationPeriod" => "36000",
+           "PolicyName"             => "The name of the policy being created. The name must be unique within the set of policies for this load balancer."
+        }
+      ]
+    LoadBalancerName: |
+      "A name for the load balancer. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the load balancer."
+      "If you specify a name, you cannot do updates that require this resource to be replaced. You can still do updates that require no or some interruption. If you must replace the resource, specify a new name."
+    Listeners: |
+      [
+        {
+           "InstancePort"     => 80,
+           "InstanceProtocol" => "HTTP|HTTPS|TCP|SSL",
+           "LoadBalancerPort" => 80,
+           "PolicyNames"      => ["policy-name"],
+           "Protocol"         => "HTTP|HTTPS|TCP|SSL",
+           "SSLCertificateId" => "arn:xxxx"
+        } 
+      ]
+    Policies: |
+      [
+        {
+           "PolicyName" => "MySSLNegotiationPolicy",
+           "PolicyType" => "SSLNegotiationPolicyType",
+           "Attributes" => [
+              { "Name" => "Protocol-TLSv1", "Value" => "true" },
+              { "Name" => "Protocol-SSLv2", "Value" => "true" },
+              { "Name" => "Protocol-SSLv3", "Value" => "false" },
+              { "Name" => "DHE-RSA-AES256-SHA", "Value" => "true" } ]
+        }, {
+           "PolicyName" => "MyAppCookieStickinessPolicy",
+           "PolicyType" => "AppCookieStickinessPolicyType",
+           "Attributes" => [
+              { "Name" => "CookieName", "Value" => "MyCookie"} ]
+        }, {
+           "PolicyName" => "MyPublicKeyPolicy",
+           "PolicyType" => "PublicKeyPolicyType",
+           "Attributes" => [ {
+              "Name" => "PublicKey",
+              "Value" => { "Fn::Join" => [
+                 "\n", [
+                    "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDh/51Aohx5VrpmlfGHZCzciMBa",
+                    "fkHve+MQYYJcxmNUKMdsWnz9WtVfKxxWUU7Cfor4lorYmENGCG8FWqCoLDMFs7pN",
+                    "yGEtpsrlKhzZWtgY1d7eGrUrBil03bI90E2KW0j4qAwGYAC8xixOkNClicojeEz4",
+                    "f4rr3sUf+ZBSsuMEuwIDAQAB" ]
+              ] }
+           } ]
+        }, {
+           "PolicyName" => "MyBackendServerAuthenticationPolicy",
+           "PolicyType" => "BackendServerAuthenticationPolicyType",
+           "Attributes" => [
+              { "Name" => "PublicKeyPolicyName", "Value" => "MyPublicKeyPolicy" } ],
+           "InstancePorts" => [ "8443" ]
+        },
+        {
+           "PolicyName" => "EnableProxyProtocol",
+           "PolicyType" => "ProxyProtocolPolicyType",
+           "Attributes" => [{
+              "Name"  => "ProxyProtocol",
+              "Value" => "true"
+           }],
+           "InstancePorts" => [ "80" ]
+        },
+        {
+           "PolicyName" => "ELBSecurityPolicyName",
+           "PolicyType" => "SSLNegotiationPolicyType",
+           "Attributes" => [{
+              "Name"  => "Reference-Security-Policy",
+              "Value" => "ELBSecurityPolicy-2014-10"
+           }]
+        } 
+      ]
+    Scheme: |
+      "internal|internet-facing, If you specify internal, you must specify subnets to associate with the load balancer, not Availability Zones."
+    SecurityGroups: |
+      ["sg-xxxx"]
+    Subnets: |
+      ["subnet-xxxx"]
+    Tags: |
+      [
+        {
+           "Key"   => "Application",
+           "Value" => "my-app"
+        }    
+      ]

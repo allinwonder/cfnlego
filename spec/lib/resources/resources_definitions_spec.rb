@@ -75,5 +75,11 @@ describe "resource definitions" do
     let(:logical_name) { "TopicPolicy" }
     it_behaves_like "general definition"
   end
+
+  describe "ElasticLoadBalancing/LoadBalancer" do
+    let(:type) { "ElasticLoadBalancing::LoadBalancer" }
+    let(:logical_name) { "lb" }
+    it_behaves_like "general definition"
+  end
 end
 

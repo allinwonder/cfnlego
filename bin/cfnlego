@@ -14,7 +14,7 @@ OptionParser.new do |opts|
     options[:resources] << r
   end
 
-  opts.on("-i", "--indent TOKEN", "Use TOKEN for indent character (default 2 space)") do |i|
+  opts.on("-i", "--indent TOKEN", "Use TOKEN for indent character (default space)") do |i|
     @indent_token = i
   end
 

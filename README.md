@@ -18,15 +18,16 @@ $ gem install cfnlego
 
 $ cfnlego --help
 Usage: cfnlego --reousrce resource [options]
-    -r RESOURCE_TYPE,RESOURCE_LOGICAL_NAME
+    -r RESOURCE_TYPE,RESOURCE_LOGICAL_NAME,
         --resource                   Add resource type and logical name
+    -i, --indent TOKEN               Use TOKEN for indent character (default space)
+    -c, --indent-count [COUNT]       Count of characters to use for indenting. (default: 2)
     -h, --help                       Prints this help
 Example:
   cfnlego                                           \
     --reousrce AutoScaling::AutoScalingGroup,ASG    \
     --reousrce IAM::Role,Role                       \
     --reousrce IAM::InstanceProfile,InstanceProfile \
-
 ```
 
 ### License

@@ -10,7 +10,7 @@ options = {resources: []}
 OptionParser.new do |opts|
   opts.banner = "Usage: cfnlego --reousrce resource [options]"
 
-  opts.on("-r", "--resource=RESOURCE_TYPE,RESOURCE_LOGICAL_NAME", "Add resource type and logical name") do |r|
+  opts.on("-r", "--resource RESOURCE_TYPE,RESOURCE_LOGICAL_NAME", "Add resource type and logical name") do |r|
     options[:resources] << r
   end
 

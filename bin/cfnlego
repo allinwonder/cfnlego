@@ -3,10 +3,8 @@ require_relative '../lib/cfnlego'
 require 'optparse'
 require 'ruby-beautify'
 
-@indent_token = " "
-@indent_count = 2
 include RubyBeautify
-options = {resources: []}
+options = {resources: [], indent_token: " ", indent_count: 2}
 OptionParser.new do |opts|
   opts.banner = "Usage: cfnlego --reousrce resource [options]"
 
@@ -15,7 +13,7 @@ OptionParser.new do |opts|
   end
 
   opts.on("-i", "--indent TOKEN", "Use TOKEN for indent character (default space)") do |i|
-    @indent_token = i
+    options[:indent_token] = i
   end
 
   opts.on("-c", 
@@ -23,7 +21,7 @@ OptionParser.new do |opts|
           Integer, 
           "Count of characters to use for indenting. (default: 2)") \
   do |count| 
-    @indent_count = count
+    options[:indent_count] = count
   end
 
   opts.on("-h", "--help", "Prints this help") do
@@ -38,6 +36,11 @@ EXAMPLE
 
     exit
   end
+
+  opts.on("-v", "--version", "Show version") do
+    puts Cfnlego::VERSION
+    exit 
+  end
 end.parse!
 
 # Constructure Resources
@@ -51,5 +54,5 @@ options[:resources].each do |r|
 end
 
 puts pretty_string Cfnlego::CloudFormation.new(resources).render, 
-                   indent_token: @indent_token, 
-                   indent_count: @indent_count
+                   indent_token: options[:indent_token], 
+                   indent_count: options[:indent_count]

@@ -4,6 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cfnlego/version'
 
 Gem::Specification.new do |spec|
+  spec.required_ruby_version = '>= 2.0'
   spec.name          = "cfnlego"
   spec.version       = Cfnlego::VERSION
   spec.authors       = ["Kevin Yung"]

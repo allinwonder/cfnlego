@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'ruby-beautify'
+
 group :development, :test do
   gem 'rake'
   gem 'rspec'

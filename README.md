@@ -7,7 +7,7 @@ cfnlego
 
 cfnlego is built to quickly bootstrap CloudFormation development with cfndsl.
 
-It provides templates for all AWS Resources and simply bake them into a template
+It provides templates for eventurally all (WIP) AWS Resources and simply bake them into a template
 
 ### How to use
 
@@ -29,6 +29,20 @@ Example:
     --reousrce IAM::Role,Role                       \
     --reousrce IAM::InstanceProfile,InstanceProfile \
 ```
+
+### Current Supported Resources
+
+- AWS::AutoScaling::AutoScalingGroup
+- AWS::AutoScaling::LaunchConfiguration
+- AWS::AutoScaling::LifecycleHook
+- AWS::CloudWatch::Alarm
+- AWS::ElasticLoadBalancing::LoadBalancer
+- AWS::IAM::InstanceProfile
+- AWS::IAM::ManagedPolicy
+- AWS::IAM::Role
+- AWS::Lambda::Function
+- AWS::SNS::Topic
+- AWS::SNS::TopicPolicy
 
 ### License
 

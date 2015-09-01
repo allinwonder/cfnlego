@@ -81,5 +81,11 @@ describe "resource definitions" do
     let(:logical_name) { "lb" }
     it_behaves_like "general definition"
   end
+
+  describe "IAM/ManagedPolicy" do
+    let(:type) { "IAM::ManagedPolicy" }
+    let(:logical_name) { "mp" }
+    it_behaves_like "general definition"
+  end
 end
 

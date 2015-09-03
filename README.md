@@ -1,7 +1,7 @@
 cfnlego
 ========
 
-[![Build Status](https://travis-ci.org/allinwonder/cfnlego.svg)](https://travis-ci.org/allinwonder/cfnlego) [![Gem Version](https://badge.fury.io/rb/cfnlego.svg)](http://badge.fury.io/rb/cfnlego) [![Coverage Status](https://coveralls.io/repos/allinwonder/cfnlego/badge.svg?branch=master&service=github)](https://coveralls.io/github/allinwonder/cfnlego?branch=master)
+[![Build Status](https://travis-ci.org/allinwonder/cfnlego.svg)](https://travis-ci.org/allinwonder/cfnlego) [![Gem Version](https://badge.fury.io/rb/cfnlego.svg)](http://badge.fury.io/rb/cfnlego) [![Code Climate](https://codeclimate.com/github/allinwonder/cfnlego/badges/gpa.svg)](https://codeclimate.com/github/allinwonder/cfnlego)
 
 ### Description
 

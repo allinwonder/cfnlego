@@ -7,7 +7,3 @@ rvm:
 matrix:
   allow_failures:
     - rvm: ruby-head
-install:
-  - bundle install
-script:
-  - bundle exec rspec

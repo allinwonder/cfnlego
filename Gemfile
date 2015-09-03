@@ -8,6 +8,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'cfndsl'
-  gem 'coveralls', require: false
+  gem "codeclimate-test-reporter"
 end
 

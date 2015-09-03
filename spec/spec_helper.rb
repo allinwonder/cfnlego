@@ -3,8 +3,9 @@ require 'tempfile'
 require 'cfndsl'
 require 'json'
 require_relative '../lib/cfnlego'
-require 'coveralls'
-Coveralls.wear!
+
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

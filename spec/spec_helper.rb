@@ -5,6 +5,14 @@ require 'json'
 require_relative '../lib/cfnlego'
 
 require "codeclimate-test-reporter"
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    SimpleCov::Formatter::HTMLFormatter,
+      Coveralls::SimpleCov::Formatter
+]
+
+SimpleCov.start
+
 CodeClimate::TestReporter.start
 
 RSpec.configure do |config|

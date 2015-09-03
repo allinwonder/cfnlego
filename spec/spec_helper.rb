@@ -3,6 +3,8 @@ require 'tempfile'
 require 'cfndsl'
 require 'json'
 require_relative '../lib/cfnlego'
+require 'coveralls'
+Coveralls.wear!
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

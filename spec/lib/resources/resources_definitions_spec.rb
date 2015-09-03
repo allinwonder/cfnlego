@@ -87,5 +87,17 @@ describe "resource definitions" do
     let(:logical_name) { "mp" }
     it_behaves_like "general definition"
   end
+
+  describe "CloudFront/Distribution" do
+    let(:type) { "CloudFront::Distribution" }
+    let(:logical_name) { "cfd" }
+    it_behaves_like "general definition"
+  end
+
+  describe "Route53/RecordSet" do
+    let(:type) { "Route53::RecordSet" }
+    let(:logical_name) { "rd" }
+    it_behaves_like "general definition"
+  end
 end
 

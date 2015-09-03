@@ -1,0 +1,87 @@
+ AWS::CloudFront::Distribution:
+   Properties:
+    DistributionConfig: |
+      {
+        "Aliases"              => ["CNAMEs (alternate domain names), if any, for the distribution"],
+        "CacheBehaviors"       => [
+          {
+             "AllowedMethods"       => ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"], # default ["HEAD", "GET"]
+             "CachedMethods"        => ["GET", "HEAD", "OPTIONS"], # default  ["HEAD", "GET"]
+             "ForwardedValues"      => {
+               "Cookies"     => {
+                 "Forward"          => "\"none, all, or whitelist\"",
+                 "WhitelistedNames" => ["The names of cookies to forward to the origin for the cache behavior."]
+               },
+               "Headers"     => ["(whitelisted headers)", "If you specify a single asterisk *, all headers are forwarded"],
+               "QueryString" => false # Indicates whether you want CloudFront to forward query strings to the origin, Required: Yes
+             },
+             "MinTTL"               => "\"The minimum amount of time that you want objects to stay in the cache\"",
+             "PathPattern"          => "\"The pattern to which this cache behavior applies. For example, you can specify images/*.jpg.\"",
+             "SmoothStreaming"      => "\"distribute media files in the Microsoft Smooth Streaming format\"",
+             "TargetOriginId"       => "\"The ID value of the origin to which you want CloudFront to route requests\"",
+             "TrustedSigners"       => ["A list of AWS accounts that can create signed URLs in order to access private content."],
+             "ViewerProtocolPolicy" => "\"The protocol that users can use to access the files\""
+          }  
+         ],
+        "Comment"              => "\"Comment\"",
+        "CustomErrorResponses" => [
+          {
+            "ErrorCachingMinTTL" => 300,  #The default value is 300.
+            "ErrorCode"          => 500,  # 400, 403, 404, 405, 414, 500, 501, 502, 503, or 504
+            "ResponseCode"       => 500,  # 200, 400, 403, 404, 405, 414, 500, 501, 502, 503, or 504.
+            "ResponsePagePath"   => "\"The path to the custom error page\""
+          }
+         ],
+        "DefaultCacheBehavior" => {
+          "AllowedMethods"       => ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"], # default ["HEAD", "GET"]
+          "CachedMethods"        => ["GET", "HEAD", "OPTIONS"], # default ["HEAD", "GET"].
+          "ForwardedValues"      => {
+            "Cookies"     => {
+              "Forward"          => "\"none, all, or whitelist\"",
+              "WhitelistedNames" => ["The names of cookies to forward to the origin for the cache behavior."]
+            },
+            "Headers"     => ["(whitelisted headers)", "If you specify a single asterisk *, all headers are forwarded"],
+            "QueryString" => false # Indicates whether you want CloudFront to forward query strings to the origin, Required: Yes
+          },
+          "MinTTL"               => "\"The minimum amount of time that you want objects to stay in the cache\"",
+          "SmoothStreaming"      => "\"distribute media files in the Microsoft Smooth Streaming format\"",
+          "TargetOriginId"       => "\"The ID value of the origin to which you want CloudFront to route requests\"",
+          "TrustedSigners"       => ["A list of AWS accounts that can create signed URLs in order to access private content."],
+          "ViewerProtocolPolicy" => "\"allow-all | redirect-to-https | https-only\""
+        },
+        "DefaultRootObject"    => "\"The object (such as index.html) that you want CloudFront to request from your origin when the root URL\"",
+        "Enabled"              => true,
+        "Logging"              => {
+          "Bucket"         => "\"s3bucket\"",
+          "IncludeCookies" => true,
+          "Prefix"         => "\"/prefix\""
+        },
+        "Origins"              => [
+          {
+            "CustomOriginConfig" => {
+              "HTTPPort"             => "\"80\"",
+              "HTTPSPort"            => "\"443\"",
+              "OriginProtocolPolicy" => "\"http-only | match-viewer\""
+            },
+            "DomainName"         => "\"The DNS name of the Amazon Simple Storage Service (S3) bucket or the HTTP server\"",
+            "Id"                 => "\"An identifier for the origin\"",
+            "OriginPath"         => "\The path that CloudFront uses to request content from an S3 bucket or custom origin. The combination of the DomainName and OriginPath properties must resolve to a valid path. The value must start with a slash mark (/) and cannot end with a slash mark.\"",
+            "S3OriginConfig"     => {
+              "OriginAccessIdentity" => "\"origin-access-identity/cloudfront/ID-of-origin-access-identity\""
+            }     
+          }
+        ],
+        "PriceClass"           => "PriceClass_All | PriceClass_200 | PriceClass_100",
+        "Restrictions"         => {
+          "GeoRestriction" => {
+            "Locations"       => ["The two-letter, uppercase country code for a country that you want to include in your blacklist or whitelist."],
+            "RestrictionType" => "\"blacklist | whitelist | none\""
+          }
+        },
+        "ViewerCertificate"    => {
+          "CloudFrontDefaultCertificate" => true,
+          "IamCertificateId"             => "\"The IAM certificate ID to use if you're using an alternate domain name, Path MUST starts with /cloudfront/",
+          "MinimumProtocolVersion"       => "\"If you specify the IamCertificateId property and specify SNI only for the SslSupportMethod property, you must use TLSv1 for the minimum protocol version. If you don't specify a value, AWS CloudFormation specifies SSLv3.\"",
+          "SslSupportMethod"             => "\"vip | sni-only\""
+        }
+      }     

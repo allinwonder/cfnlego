@@ -25,7 +25,9 @@ AWS::EC2::SecurityGroup:
       ]
      Tags:  |
       [
-        "Key" => "Name",
-        "Value" => "allow HTTP Eg and In"
+        {
+          "Key"   => "Name",
+          "Value" => "allow HTTP Eg and In"
+        }
       ]
      VpcId: "\"vpc-xxxxx\""

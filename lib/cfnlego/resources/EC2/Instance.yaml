@@ -67,8 +67,10 @@ AWS::EC2::Instance:
     SubnetId: "\"sb-xxxx\""
     Tags: |
       [
-        "Key"   => "Name",
-        "Value" => "Test EC2"
+        {
+          "Key"   => "Name",
+          "Value" => "Test EC2"
+        }
       ]
     Tenancy: "\"default | dedicated\""
     UserData: |

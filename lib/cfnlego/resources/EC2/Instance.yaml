@@ -74,14 +74,14 @@ AWS::EC2::Instance:
       ]
     Tenancy: "\"default | dedicated\""
     UserData: |
-      FnJoin("/n",
+      FnBase64(FnJoin("/n",
         [
           "/bin/bash", 
           "exec 1<&-", 
           "exec 2<&-", 
           "exec 1<>/var/log/user-data.txt", 
           "exec 2>&1"
-        ])
+        ]))
     Volumes: |
       [
         {

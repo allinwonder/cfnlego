@@ -1,0 +1,31 @@
+AWS::EC2::SecurityGroup:
+  Properties:
+     GroupDescription: "\"allow something and not allow something\""
+     SecurityGroupEgress: |
+      [
+        {
+           "CidrIp"                     => "0.0.0.0/0",
+           "FromPort"                   => "80",
+           "IpProtocol"                 => "tcp, udp, icmp, -1",
+           "SourceSecurityGroupId"      => "sg-xxx, For VPC security groups only.",
+           "SourceSecurityGroupName"    => "use in EC2-Classic, default VPC",
+           "SourceSecurityGroupOwnerId" => "[EC2-Classic, default VPC] The AWS account number for the source security group.",
+           "ToPort"                     => "80"
+        }
+      ]
+     SecurityGroupIngress: |
+      [
+        {
+           "CidrIp"                     => "192.168.0.0/24",
+           "FromPort"                   => "80",
+           "IpProtocol"                 => "tcp, udp, icmp, -1",
+           "DestinationSecurityGroupId" => "Specifies the GroupId of the destination Amazon VPC security group.",
+           "ToPort"                     => "80"
+        }
+      ]
+     Tags:  |
+      [
+        "Key" => "Name",
+        "Value" => "allow HTTP Eg and In"
+      ]
+     VpcId: "\"vpc-xxxxx\""

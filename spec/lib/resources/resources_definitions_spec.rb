@@ -105,5 +105,11 @@ describe "resource definitions" do
     let(:logical_name) { "ec2" }
     it_behaves_like "general definition"
   end
+  
+  describe "EC2/SecurityGrouup" do
+    let(:type) { "EC2::SecurityGroup" }
+    let(:logical_name) { "sg" }
+    it_behaves_like "general definition"
+  end
 end
 

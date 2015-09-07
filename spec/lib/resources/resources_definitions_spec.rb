@@ -99,5 +99,11 @@ describe "resource definitions" do
     let(:logical_name) { "rd" }
     it_behaves_like "general definition"
   end
+
+  describe "EC2/Instance" do
+    let(:type) { "EC2::Instance" }
+    let(:logical_name) { "ec2" }
+    it_behaves_like "general definition"
+  end
 end
 

@@ -1,0 +1,90 @@
+AWS::EC2::Instance:
+  Properties:
+    AvailabilityZone: "\"ap-southeast-2\""
+    BlockDeviceMappings: |
+      [
+        {
+          "DeviceName" => "/dev/sda1",
+          "Ebs" => {
+             "DeleteOnTermination" => false,
+             "Encrypted"           => false,
+             "Iops"                => "1000",
+             "SnapshotId"          => "snap-xxxxx",
+             "VolumeSize"          => "100",
+             "VolumeType"          => "standard | io1 | gp2"
+          }  
+        },
+        {
+           "DeviceName" => "/dev/sde",
+           "NoDevice"   => {}
+        },
+        {
+          "DeviceName"  => "/dev/sdc",
+          "VirtualName" => "ephemeral0"
+        }
+      ]
+    DisableApiTermination: "\"false\""
+    EbsOptimized: "\"false\""
+    IamInstanceProfile: "\"instance profile id\""
+    ImageId: "\"ami-xxxx\""
+    InstanceInitiatedShutdownBehavior: "\"stop | terminate\""
+    InstanceType: "\"t2.small\""
+    KernelId: "\"your kernel Id\""
+    KeyName: "\"your ssh key name\""
+    Monitoring: "\"true\""
+    NetworkInterfaces: |
+      [
+        {
+           "AssociatePublicIpAddress" => false,
+           "DeleteOnTermination"      => true,
+           "Description"              => "service nic" ,
+           "DeviceIndex"              => "1",
+           "GroupSet"                 => [ "sg-xxxx", "sg-xxxx" ],
+           "NetworkInterfaceId"       => "An existing network interface ID.",
+           "PrivateIpAddress"         => "192.168.0.111",
+           "PrivateIpAddresses" => [
+              {
+                 "PrivateIpAddress" => "192.168.0.112",
+                 "Primary"          => true
+              },     
+              {
+                 "PrivateIpAddress" => "192.168.1.112",
+                 "Primary"          => false
+              }     
+            ],
+           "SecondaryPrivateIpAddressCount" => "The number of secondary private IP addresses that Amazon EC2 auto assigns to the network interface. ",
+           "SubnetId" => "sb-xxxxxx"
+        }
+      ]
+    PlacementGroupName: "\"pg-xxxxx\""
+    PrivateIpAddress: "\"192.168.0.111\""
+    RamdiskId: "\"ram-xxx\""
+    SecurityGroupIds: |
+      [ "sg-xxx", "sg-xxx" ] # A list that contains the security group IDs for VPC security groups
+    SecurityGroups: | 
+      ["sg-xxx", "sg-xxx"] #  The list can contain both the name of existing Amazon EC2 security groups or references to AWS::EC2::SecurityGroup resources created in the template.
+    SourceDestCheck: "\"true\""
+    SubnetId: "\"sb-xxxx\""
+    Tags: |
+      [
+        "Key"   => "Name",
+        "Value" => "Test EC2"
+      ]
+    Tenancy: "\"default | dedicated\""
+    UserData: |
+      FnJoin("/n",
+        [
+          "/bin/bash", 
+          "exec 1<&-", 
+          "exec 2<&-", 
+          "exec 1<>/var/log/user-data.txt", 
+          "exec 2>&1"
+        ])
+    Volumes: |
+      [
+        {
+           "Device" => "/dev/sda",
+           "VolumeId" => "vol-xxxx"
+        }  
+      ]
+    AdditionalInfo: "\"reserved property for AWS\""

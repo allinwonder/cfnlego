@@ -32,19 +32,21 @@ Example:
 
 ### Current Supported Resources
 
--  AWS::AutoScaling::AutoScalingGroup
--  AWS::AutoScaling::LaunchConfiguration
--  AWS::AutoScaling::LifecycleHook
--  AWS::CloudFront::Distribution
--  AWS::CloudWatch::Alarm
--  AWS::ElasticLoadBalancing::LoadBalancer
--  AWS::IAM::InstanceProfile
--  AWS::IAM::ManagedPolicy
--  AWS::IAM::Role
--  AWS::Lambda::Function
--  AWS::Route53::RecordSet
--  AWS::SNS::Topic
--  AWS::SNS::TopicPolicy
+- AWS::AutoScaling::AutoScalingGroup
+- AWS::AutoScaling::LaunchConfiguration
+- AWS::AutoScaling::LifecycleHook
+- AWS::CloudFront::Distribution
+- AWS::CloudWatch::Alarm
+- AWS::EC2::Instance
+- AWS::EC2::SecurityGroup
+- AWS::ElasticLoadBalancing::LoadBalancer
+- AWS::IAM::InstanceProfile
+- AWS::IAM::ManagedPolicy
+- AWS::IAM::Role
+- AWS::Lambda::Function
+- AWS::Route53::RecordSet
+- AWS::SNS::Topic
+- AWS::SNS::TopicPolicy
 
 ### License
 

@@ -45,6 +45,8 @@ Example:
 - AWS::IAM::Role
 - AWS::Lambda::Function
 - AWS::Route53::RecordSet
+- AWS::Route53::RecordSetGroup
+- AWS::Route53::HealthCheck
 - AWS::SNS::Topic
 - AWS::SNS::TopicPolicy
 

@@ -1,0 +1,29 @@
+AWS::Route53::RecordSetGroup:
+  Properties:
+    HostedZoneId: "\"xxxxx\""
+    HostedZoneName: |
+      "example.com." # When you create a stack using an AWS::Route53::RecordSet that specifies HostedZoneName, AWS CloudFormation attempts to find a hosted zone whose name matches the HostedZoneName. If AWS CloudFormation cannot find a hosted zone with a matching domain name, or if there is more than one hosted zone with the specified domain name, AWS CloudFormation will not create the stack.  If you have multiple hosted zones with the same domain name, you must explicitly specify the hosted zone using HostedZoneId.  Required: Conditional. You must specify either the HostedZoneName or HostedZoneId, but you cannot specify both." 
+    RecordSets: |
+      [
+        {
+          "AliasTarget" => "AliasTarget",
+          "Comment" => "String",
+          "Failover" => "String",
+          "GeoLocation" => {
+            "ContinentCode" => "see http://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets_Requests.html#change-rrsets-request-continent-code",
+            "CountryCode" => "String",
+            "SubdivisionCode" => "String"
+          },
+          "HealthCheckId" => "String",
+          "HostedZoneId" => "String",
+          "HostedZoneName" => "String",
+          "Name" => "String",
+          "Region" => "String", # Latency resource record sets only: The Amazon EC2 region where the resource that is specified in this resource record set resides. The resource typically is an AWS resource, for example, Amazon EC2 instance or an Elastic Load Balancing load balancer, and is referred to by an IP address or a DNS domain name, depending on the record type.
+          "ResourceRecords" => [ "String" ],
+          "SetIdentifier" => "String",
+          "TTL" => "String",
+          "Type" => "String",
+          "Weight" => "Integer"
+        }
+      ] 
+    Comment: "\"Comment\""

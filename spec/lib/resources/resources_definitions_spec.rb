@@ -100,6 +100,18 @@ describe "resource definitions" do
     it_behaves_like "general definition"
   end
 
+  describe "Route53/HealthCheck" do
+    let(:type) { "Route53::HealthCheck" }
+    let(:logical_name) { "rchk" }
+    it_behaves_like "general definition"
+  end
+  
+  describe "Route53/RecordSetGroup" do
+    let(:type) { "Route53::RecordSetGroup" }
+    let(:logical_name) { "rdgroup" }
+    it_behaves_like "general definition"
+  end
+
   describe "EC2/Instance" do
     let(:type) { "EC2::Instance" }
     let(:logical_name) { "ec2" }

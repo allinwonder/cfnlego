@@ -39,6 +39,7 @@ Example:
 - AWS::CloudWatch::Alarm
 - AWS::EC2::Instance
 - AWS::EC2::SecurityGroup
+- AWS::EC2::SpotFleet
 - AWS::ElasticLoadBalancing::LoadBalancer
 - AWS::IAM::InstanceProfile
 - AWS::IAM::ManagedPolicy
@@ -49,6 +50,9 @@ Example:
 - AWS::Route53::HealthCheck
 - AWS::SNS::Topic
 - AWS::SNS::TopicPolicy
+- AWS::ECS::Cluster
+- AWS::ECS::Service
+- AWS::ECS::TaskDefinition
 
 ### License
 

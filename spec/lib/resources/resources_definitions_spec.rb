@@ -141,5 +141,11 @@ describe "resource definitions" do
     let(:logical_name) { "ecsvc" }
     it_behaves_like "general definition"
   end
+
+  describe "ECS/TaskDefinition" do
+    let(:type) { "ECS::TaskDefinition" }
+    let(:logical_name) { "ecstk" }
+    it_behaves_like "general definition"
+  end
 end
 

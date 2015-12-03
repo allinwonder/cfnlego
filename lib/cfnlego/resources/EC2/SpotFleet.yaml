@@ -1,0 +1,52 @@
+AWS::EC2::SpotFleet:
+  Properties:
+    SpotFleetRequestConfigData: |
+      {
+        "IamFleetRole" => "The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that grants the Spot fleet the ability to bid on",
+        "LaunchSpecifications" => [ 
+          {
+            "BlockDeviceMappings" => [
+              {
+                "DeviceName"  => "such as /dev/dsh or xvdh",
+                "Ebs"         => "You can specify either the VirtualName or Ebs, but not both.",
+                "NoDevice"    => "Boolean", # Suppresses the specified device that is included in the block device mapping of the Amazon Machine Image 
+                "VirtualName" => "The name must be in the form ephemeralX where X is a number equal to or greater than zero (0), for example, ephemeral0."
+              }
+            ],
+            "EbsOptimized"       => "Boolean",
+            "IamInstanceProfile" => "IamInstanceProfile",
+            "ImageId"            => "String",
+            "InstanceType"       => "String",
+            "KernelId"           => "String",
+            "KeyName"            => "String",
+            "Monitoring"         => "Boolean",
+            "NetworkInterfaces"  => [
+              {
+                "AssociatePublicIpAddress"       => "Boolean",
+                "DeleteOnTermination"            => "Boolean",
+                "Description"                    => "String",
+                "DeviceIndex"                    => "Integer",
+                "Groups"                         => ["A list of security group IDs to associate with this network interface."],
+                "NetworkInterfaceId"             => "String",
+                "PrivateIpAddresses"             => ["One or more private IP addresses to assign to the network interface. "],
+                "SecondaryPrivateIpAddressCount" => "Integer", #The number of secondary private IP addresses that Amazon Elastic Compute Cloud (Amazon EC2) automatically assigns
+                "SubnetId"                       => "String"
+              }
+            ],
+            "Placement"          => {
+              "AvailabilityZone" => "String",
+              "GroupName"        => "The name of the placement group (for cluster instances)."
+            },
+            "RamdiskId"          => "String",
+            "SecurityGroups"     => ["One or more security group IDs to associate with the instances."],
+            "SubnetId"           => "String",
+            "UserData"           => "Base64-encoded MIME user data that instances use when starting up.", # FnBase64(data)
+            "WeightedCapacity"   => "Number"
+          }
+        ],
+        "SpotPrice"              => "String",
+        "TargetCapacity"         => "Integer", #The number of units to request. You can choose to set the target capacity as instances or a performance characteristic that is important to your application workload, such as vCPUs, memory, or I/O.
+        "TerminateInstancesWithExpiration" => "Boolean", # Indicates whether running Spot instances are terminated when the Spot fleet request expires.
+        "ValidFrom"              => "String", # The start date and time of the request, in UTC format (YYYY-MM-DDTHH:MM:SSZ). By default, Amazon EC2 starts fulfilling the request immediately.
+        "ValidUntil"             => "String" # The end date and time of the request, in UTC format (YYYY-MM-DDTHH:MM:SSZ). After the end date and time, Amazon EC2 doesn't request new Spot instances or enable them to fulfill the request.
+      }

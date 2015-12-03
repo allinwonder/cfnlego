@@ -123,5 +123,23 @@ describe "resource definitions" do
     let(:logical_name) { "sg" }
     it_behaves_like "general definition"
   end
+  
+  describe "EC2/SpotFleet" do
+    let(:type) { "EC2::SpotFleet" }
+    let(:logical_name) { "sf" }
+    it_behaves_like "general definition"
+  end
+
+  describe "ECS/Cluster" do
+    let(:type) { "ECS::Cluster" }
+    let(:logical_name) { "cluster" }
+    it_behaves_like "general definition"
+  end
+
+  describe "ECS/Service" do
+    let(:type) { "ECS::Service" }
+    let(:logical_name) { "ecsvc" }
+    it_behaves_like "general definition"
+  end
 end
 

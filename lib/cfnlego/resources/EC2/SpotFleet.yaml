@@ -14,7 +14,7 @@ AWS::EC2::SpotFleet:
               }
             ],
             "EbsOptimized"       => "Boolean",
-            "IamInstanceProfile" => "IamInstanceProfile",
+            "IamInstanceProfile" => {"Arn" => "IamInstanceProfile" },
             "ImageId"            => "String",
             "InstanceType"       => "String",
             "KernelId"           => "String",
@@ -38,7 +38,7 @@ AWS::EC2::SpotFleet:
               "GroupName"        => "The name of the placement group (for cluster instances)."
             },
             "RamdiskId"          => "String",
-            "SecurityGroups"     => ["One or more security group IDs to associate with the instances."],
+            "SecurityGroups"     => [{"GroupId" => "sg-xxxx"}],
             "SubnetId"           => "String",
             "UserData"           => "Base64-encoded MIME user data that instances use when starting up.", # FnBase64(data)
             "WeightedCapacity"   => "Number"

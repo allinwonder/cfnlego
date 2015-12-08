@@ -1,0 +1,45 @@
+AWS::KMS::Key:
+  Properties: 
+    Description: "\"Key Description\""
+    Enabled: true
+    EnableKeyRotation: true
+    KeyPolicy: |
+        { 
+          "Id"            => "SharedKeyPolicy",
+          "Version"       => "2012-10-17",
+          "Statement"     => [
+            {
+              "Sid"       => "Allow access for Admin",
+              "Effect"    => "Allow",
+              "Principal" => {
+                "AWS"     => "arn:aws:iam::ACCOUNT_ID:role/Administrator"
+              },
+              "Action"    => [
+                "kms:*"
+              ],
+              "Resource"  => "*"
+            },
+            { 
+              "Sid"       => "Allow access for Developers/Operators",
+              "Effect"    => "Allow",
+              "Principal" => {
+                "AWS"     => "arn:aws:iam::ACCOUNT_ID:role/Developers"
+              },
+              "Action"    => [
+                "kms:Decrypt",
+                "kms:DescribeKey",
+                "kms:Encrypt",
+                "kms:GenerateRandom",
+                "kms:GenerateDataKey",
+                "kms:GenerateDataKeyWithoutPlaintext",
+                "kms:GetKeyPolicy",
+                "kms:GetKeyRotationStatus",
+                "kms:ReEncrypt*",
+                "kms:RetireGrant",
+                "kms:RevokeGrant",
+                "kms:CreateGrant"
+              ],
+              "Resource" => "*"
+            }
+          ]
+        }

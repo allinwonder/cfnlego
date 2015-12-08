@@ -147,5 +147,11 @@ describe "resource definitions" do
     let(:logical_name) { "ecstk" }
     it_behaves_like "general definition"
   end
+
+  describe "KMS/Key" do
+    let(:type) { "KMS::Key" }
+    let(:logical_name) { "KmsKey" }
+    it_behaves_like "general definition"
+  end
 end
 

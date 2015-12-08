@@ -2,6 +2,8 @@ AWS::EC2::SpotFleet:
   Properties:
     SpotFleetRequestConfigData: |
       {
+        "AllocationStrategy" => "String", #lowestPrice | diversified
+        "ExcessCapacityTerminationPolicy" => "String", #  NoTermination | Default
         "IamFleetRole" => "The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that grants the Spot fleet the ability to bid on",
         "LaunchSpecifications" => [ 
           {

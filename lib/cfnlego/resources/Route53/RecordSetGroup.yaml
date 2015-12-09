@@ -7,7 +7,6 @@ AWS::Route53::RecordSetGroup:
       [
         {
           "AliasTarget" => "AliasTarget",
-          "Comment" => "String",
           "Failover" => "String",
           "GeoLocation" => {
             "ContinentCode" => "see http://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets_Requests.html#change-rrsets-request-continent-code",

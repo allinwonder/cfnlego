@@ -21,8 +21,10 @@ Usage: cfnlego --reousrce resource [options]
     -r RESOURCE_TYPE,RESOURCE_LOGICAL_NAME,
         --resource                   Add resource type and logical name
     -i, --indent TOKEN               Use TOKEN for indent character (default space)
+    -l, --list                       List supported resources
     -c, --indent-count [COUNT]       Count of characters to use for indenting. (default: 2)
     -h, --help                       Prints this help
+    -v, --version                    Show version
 Example:
   cfnlego                                           \
     --reousrce AutoScaling::AutoScalingGroup,ASG    \

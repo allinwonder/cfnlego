@@ -5,6 +5,7 @@ AWS::EC2::VPCEndpoint:
         "Statement" =>  [
           {
             "Sid"       => "Access-to-specific-bucket-only",
+            "Effect"    => "Allow",
             "Principal" => "*",
             "Action"    => [
               "s3:GetObject",

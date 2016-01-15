@@ -38,9 +38,17 @@ Example:
 - AWS::AutoScaling::ScalingPolicy
 - AWS::CloudFront::Distribution
 - AWS::CloudWatch::Alarm
+- AWS::EC2::DHCPOptions
+- AWS::EC2::EIP
 - AWS::EC2::Instance
+- AWS::EC2::InternetGateway
 - AWS::EC2::SecurityGroup
 - AWS::EC2::SpotFleet
+- AWS::EC2::Subnet
+- AWS::EC2::VPC
+- AWS::EC2::VPCDHCPOptionsAssociation
+- AWS::EC2::VPCEndpoint
+- AWS::EC2::VPCGatewayAttachment
 - AWS::ECS::Cluster
 - AWS::ECS::Service
 - AWS::ECS::TaskDefinition
@@ -50,11 +58,16 @@ Example:
 - AWS::IAM::Role
 - AWS::Kinesis::Stream
 - AWS::KMS::Key
+- AWS::Lambda::EventSourceMapping
 - AWS::Lambda::Function
+- AWS::Lambda::Permission
 - AWS::Route53::HealthCheck
+- AWS::Route53::HostedZone
 - AWS::Route53::RecordSet
 - AWS::Route53::RecordSetGroup
 - AWS::SNS::Topic
+- AWS::SNS::TopicPolicy
+
 
 ### License
 

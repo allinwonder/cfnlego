@@ -1,0 +1,8 @@
+AWS::EC2::Route:
+  Properties:
+    DestinationCidrBlock: "\"0.0.0.0/0\""
+    GatewayId: "\"igw-xxxxxx\""
+    InstanceId: "\"i-xxxxx\""
+    NetworkInterfaceId: "\"eni-xxxxxx\""
+    RouteTableId: "\"rt-xxxxxx\""
+    VpcPeeringConnectionId: "\"pe-xxxxxxx\""

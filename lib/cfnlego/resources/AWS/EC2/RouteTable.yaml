@@ -1,0 +1,10 @@
+AWS::EC2::RouteTable:
+  Properties:
+    VpcId: "\"vpc-xxxxx\""
+    Tags: |
+      [
+        {
+          "Key"   => "Name",
+          "Value" => "Test EC2"
+        }
+      ]

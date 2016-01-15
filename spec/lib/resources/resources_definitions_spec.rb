@@ -191,6 +191,30 @@ describe "resource definitions" do
     it_behaves_like "general definition"
   end
 
+  describe "AWS/EC2/NetworkAcl" do
+    let(:type) { "AWS::EC2::NetworkAcl" }
+    let(:logical_name) { "networlacl" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/EC2/NetworkAclEntry" do
+    let(:type) { "AWS::EC2::NetworkAclEntry" }
+    let(:logical_name) { "entry" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/EC2/RouteTable" do
+    let(:type) { "AWS::EC2::RouteTable" }
+    let(:logical_name) { "rt" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/EC2/Route" do
+    let(:type) { "AWS::EC2::Route" }
+    let(:logical_name) { "route" }
+    it_behaves_like "general definition"
+  end
+
   describe "AWS/ECS/Cluster" do
     let(:type) { "AWS::ECS::Cluster" }
     let(:logical_name) { "cluster" }

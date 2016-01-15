@@ -18,7 +18,7 @@ OptionParser.new do |opts|
 
   opts.on("-l", "--list", "List supported resources") do
     options[:list_resources] = true
-    puts Cfnlego.Resources
+    puts Cfnlego.Resources.sort
     exit
   end
 

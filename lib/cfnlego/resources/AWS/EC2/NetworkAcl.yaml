@@ -1,0 +1,11 @@
+AWS::EC2::NetworkAcl:
+  Properties:
+    Tags: |
+      [
+        {
+          "Key"   => "Name",
+          "Value" => "Public Subnet NetACL"
+        }
+      ]
+    vpcId: "\"vpc-xxxxx\""
+

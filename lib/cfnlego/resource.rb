@@ -10,11 +10,11 @@ module  Cfnlego
     end
 
     def attributes
-      definition["AWS::#{@type}"]["Attributes"]
+      definition["#{@type}"]["Attributes"]
     end
 
     def properties
-      definition["AWS::#{@type}"]['Properties']
+      definition["#{@type}"]['Properties']
     end
 
     private

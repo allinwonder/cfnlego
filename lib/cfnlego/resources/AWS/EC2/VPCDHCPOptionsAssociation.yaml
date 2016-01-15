@@ -1,0 +1,4 @@
+AWS::EC2::VPCDHCPOptionsAssociation:
+  Properties:
+    DhcpOptionsId: "\"dhcp_option_id\""
+    VpcId: "\"vpc_id\""

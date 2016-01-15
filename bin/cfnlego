@@ -16,6 +16,12 @@ OptionParser.new do |opts|
     options[:indent_token] = i
   end
 
+  opts.on("-l", "--list", "List supported resources") do
+    options[:list_resources] = true
+    puts Cfnlego.Resources
+    exit
+  end
+
   opts.on("-c", 
           "--indent-count [COUNT]", 
           Integer, 

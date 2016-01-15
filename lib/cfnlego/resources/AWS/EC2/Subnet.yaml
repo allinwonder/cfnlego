@@ -1,0 +1,16 @@
+AWS::EC2::Subnet:
+  Properties:
+    AvailabilityZone: |
+      "ap-southeast-2a"
+    CidrBlock: |
+      "192.168.1.0/26"
+    MapPublicIpOnLaunch: "true"
+    Tags: |
+      [ 
+         {
+            "Key"   => "Name", 
+            "Value" => "Subnet Name"
+          }
+      ]
+    VpcId: |
+      "vpc-xxxxx"

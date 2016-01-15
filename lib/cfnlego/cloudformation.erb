@@ -2,7 +2,7 @@ CloudFormation do
   Description "<%= @description %>"
 <%- @resources.each do |r| -%>
   <%="Resource \"#{r.name}\" do" %>
-    <%="Type \"AWS::#{r.type}\"" %>
+    <%="Type \"#{r.type}\"" %>
     <%- attrs = r.attributes -%>
     <%- if attrs
           attrs.keys.each do |attr| -%>

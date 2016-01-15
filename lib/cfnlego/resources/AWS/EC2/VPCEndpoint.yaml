@@ -1,0 +1,27 @@
+AWS::EC2::VPCEndpoint:
+  Properties:
+    PolicyDocument: |
+      {
+        "Statement" =>  [
+          {
+            "Sid"       => "Access-to-specific-bucket-only",
+            "Principal" => "*",
+            "Action"    => [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource" => [
+              "arn:aws:s3:::my_secure_bucket",
+              "arn:aws:s3:::my_secure_bucket/*"
+            ]
+          }
+        ]
+      }   
+    RouteTableIds: |
+      [  
+        "rt-xxxxx"
+      ]
+    ServiceName: |
+      "The AWS service to which you want to establish a connection. Specify the service name in the form of com.amazonaws.region.service."
+    VpcId: |
+      "vpc-xxxx"

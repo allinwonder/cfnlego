@@ -1,0 +1,3 @@
+AWS::Kinesis::Stream:
+  Properties: 
+    ShardCount: 1

@@ -1,0 +1,6 @@
+AWS::EC2::EIP:
+  Properties:
+    InstanceId: |
+      "The Instance ID of the Amazon EC2 instance that you want to associate with this Elastic IP address."
+    Domain: |
+      "Set to vpc to allocate the address to your Virtual Private Cloud (VPC).  If you define an Elastic IP address and associate it with a VPC that is defined in the same template, you must declare a dependency on the VPC-gateway attachment by using the DependsOn attribute on this resource."

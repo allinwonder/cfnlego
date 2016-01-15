@@ -1,0 +1,19 @@
+AWS::AutoScaling::ScalingPolicy:
+  Properties:
+    AdjustmentType: "\"ChangeInCapacity|ExactCapacity|PercentChangeInCapacity\""
+    AutoScalingGroupName: "\"The name or Amazon Resource Name (ARN) of the Auto Scaling Group\""
+    Cooldown: "600"
+    EstimatedInstanceWarmup: "\"The estimated time, in seconds, until a newly launched instance can send metrics to CloudWatch. By default, Auto Scaling uses the cooldown period, as specified in the Cooldown property.\"" 
+    MetricAggregationType: "\"Minimum|Maximum|Average(Default)\""
+    MinAdjustmentMagnitude: "\"For the PercentChangeInCapacity adjustment type, the minimum number of instances to scale. The scaling policy changes the desired capacity of the Auto Scaling group by a minimum of this many instances. This property replaces the MinAdjustmentStep property.\""
+    PolicyType: "\"SimpleScaling|StepScaling\""
+    ScalingAdjustment: "\"The number of instances by which to scale. The AdjustmentType property determines whether AWS CloudFormation interprets this number as an absolute number (when the ExactCapacityvalue is specified) or as a percentage of the existing Auto Scaling group size (when the PercentChangeInCapacity value is specified). \""
+    StepAdjustments: |
+      [ # A set of adjustments that enable you to scale based on the size of the alarm breach.
+
+        {
+          "MetricIntervalLowerBound" => "Number. The lower bound for the difference between the breach threshold and the CloudWatch metric. If the metric value exceeds the breach threshold, the lower bound is inclusive (the metric must be greater than or equal to the threshold plus the lower bound). Otherwise, it is exclusive (the metric must be greater than the threshold plus the lower bound). A null value indicates negative infinity.",
+          "MetricIntervalUpperBound" => "Number. The upper bound for the difference between the breach threshold and the CloudWatch metric. If the metric value exceeds the breach threshold, the upper bound is exclusive (the metric must be less than the threshold plus the upper bound). Otherwise, it is inclusive (the metric must be less than or equal to the threshold plus the upper bound). A null value indicates positive infinity.",
+          "ScalingAdjustment"        => "The amount by which to scale, based on the value that you specified in the AdjustmentType property. A positive value adds to the current capacity and a negative number subtracts from the current capacity."
+        }
+      ]

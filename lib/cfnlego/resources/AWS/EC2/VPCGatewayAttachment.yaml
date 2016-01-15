@@ -1,0 +1,8 @@
+AWS::EC2::VPCGatewayAttachment:
+  Properties:
+    InternetGatewayId: |
+      "igw-xxxxx"
+    VpcId: |
+      "vpc-xxxx"
+    VpnGatewayId: |
+      "vpn-xxxx"    

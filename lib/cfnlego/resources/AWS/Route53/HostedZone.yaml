@@ -1,0 +1,22 @@
+AWS::Route53::HostedZone:
+  Properties:
+    HostedZoneConfig: |
+      { 
+        "Comment" => "About the hosted Zone"
+      }
+    HostedZoneTags: |
+      [ 
+        {
+          "Key"   => "Name",
+          "Value" => "Zone Name"
+        }
+      ]
+    Name: |
+      "The name of the domain. For resource record types that include a domain name, specify a fully qualified domain name."
+    VPCs: |
+      [
+        {
+          "VPCId"     => "vpc-xxxxx",
+          "VPCRegion" => "ap-southeast-2"
+        }         
+      ]

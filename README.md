@@ -35,24 +35,26 @@ Example:
 - AWS::AutoScaling::AutoScalingGroup
 - AWS::AutoScaling::LaunchConfiguration
 - AWS::AutoScaling::LifecycleHook
+- AWS::AutoScaling::ScalingPolicy
 - AWS::CloudFront::Distribution
 - AWS::CloudWatch::Alarm
 - AWS::EC2::Instance
 - AWS::EC2::SecurityGroup
 - AWS::EC2::SpotFleet
+- AWS::ECS::Cluster
+- AWS::ECS::Service
+- AWS::ECS::TaskDefinition
 - AWS::ElasticLoadBalancing::LoadBalancer
 - AWS::IAM::InstanceProfile
 - AWS::IAM::ManagedPolicy
 - AWS::IAM::Role
+- AWS::Kinesis::Stream
+- AWS::KMS::Key
 - AWS::Lambda::Function
+- AWS::Route53::HealthCheck
 - AWS::Route53::RecordSet
 - AWS::Route53::RecordSetGroup
-- AWS::Route53::HealthCheck
 - AWS::SNS::Topic
-- AWS::SNS::TopicPolicy
-- AWS::ECS::Cluster
-- AWS::ECS::Service
-- AWS::ECS::TaskDefinition
 
 ### License
 

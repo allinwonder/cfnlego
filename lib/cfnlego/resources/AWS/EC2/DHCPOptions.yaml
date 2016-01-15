@@ -1,0 +1,26 @@
+AWS::EC2::DHCPOptions:
+  Properties:
+    DomainName: |
+      "A domain name of your choice."
+    DomainNameServers: |
+      [
+        "AmazonProvidedDNS",
+        "domain-name-for-your-region"
+      ]
+    NetbiosNameServers: |
+      [
+        "The IP address (IPv4) of a NetBIOS name server. You can specify up to four addresses."
+      ]
+    NetbiosNodeType: |
+      "An integer value indicating the NetBIOS node type: 1: Broadcast (B) 2: Point-to-point (P) 4: Mixed mode (M) 8: Hybrid (H). We recommend that you use only the value 2 at this time (broadcast and multicast are not currently supported)."
+    NtpServers: | 
+      [
+        "The IP address (IPv4) of a Network Time Protocol (NTP) server. You can specify up to four addresses."
+      ]
+    Tags: |
+      [ 
+        {
+          "Key"  => "Name",
+          "Value" => "VPC Name"
+        }
+      ]

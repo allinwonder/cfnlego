@@ -7,5 +7,5 @@ AWS::EC2::NetworkAcl:
           "Value" => "Public Subnet NetACL"
         }
       ]
-    vpcId: "\"vpc-xxxxx\""
+    VpcId: "\"vpc-xxxxx\""
 

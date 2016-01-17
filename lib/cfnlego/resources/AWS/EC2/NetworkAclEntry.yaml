@@ -3,7 +3,7 @@ AWS::EC2::NetworkAclEntry:
     CidrBlock: "\"172.16.0.0/24\""
     Egress: "\"true|false\""
     Icmp: |
-      { "code" => "-1|Integer", "Type" => "-1|Integer"}
+      { "Code" => "-1|Integer", "Type" => "-1|Integer|http://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml"}
     NetworkAclId: "\"String\""
     PortRange: |
       { "From" => "Integer", "To" => "Integer" }

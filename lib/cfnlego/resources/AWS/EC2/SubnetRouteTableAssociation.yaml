@@ -1,0 +1,4 @@
+AWS::EC2::SubnetRouteTableAssociation:
+  Properties:
+    RouteTableId: "\"rt-xxxxxxxx\""
+    SubnetId: "\"sb-xxxxxx\""

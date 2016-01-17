@@ -209,6 +209,12 @@ describe "resource definitions" do
     it_behaves_like "general definition"
   end
 
+  describe "AWS/EC2/SubnetRouteTableAssociation" do
+    let(:type) { "AWS::EC2::SubnetRouteTableAssociation" }
+    let(:logical_name) { "rta" }
+    it_behaves_like "general definition"
+  end
+
   describe "AWS/EC2/Route" do
     let(:type) { "AWS::EC2::Route" }
     let(:logical_name) { "route" }

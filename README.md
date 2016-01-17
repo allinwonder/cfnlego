@@ -44,9 +44,14 @@ Example:
 - AWS::EC2::EIP
 - AWS::EC2::Instance
 - AWS::EC2::InternetGateway
+- AWS::EC2::NetworkAcl
+- AWS::EC2::NetworkAclEntry
+- AWS::EC2::Route
+- AWS::EC2::RouteTable
 - AWS::EC2::SecurityGroup
 - AWS::EC2::SpotFleet
 - AWS::EC2::Subnet
+- AWS::EC2::SubnetRouteTableAssociation
 - AWS::EC2::VPC
 - AWS::EC2::VPCDHCPOptionsAssociation
 - AWS::EC2::VPCEndpoint

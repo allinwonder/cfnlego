@@ -1,0 +1,113 @@
+AWS::S3::Bucket:
+  Properties:
+    AccessControl: |
+      "AuthenticatedRead | AwsExecRead | BucketOwnerRead | BucketOwnerFullControl | LogDeliveryWrite | Private | PublicRead | PublicReadWrite"
+    BucketName: "\"a-bucket\""
+    CorsConfiguration: |
+      {
+        "CorsRules" => [
+          {
+            "AllowedHeaders" => ["Headers that are specified in the Access-Control-Request-Headers header. These headers are allowed in a preflight OPTIONS request. In response to any preflight OPTIONS request, Amazon S3 returns any requested headers that are allowed."],
+            "AllowedMethods" => ["The valid values are GET, PUT, HEAD, POST, and DELETE."],
+            "AllowedOrigins" => ["An origin that you allow to send cross-domain requests."],
+            "ExposedHeaders" => ["One or more headers in the response that are accessible to client applications (for example, from a JavaScript XMLHttpRequest object)."],
+            "Id" => "A unique identifier for this rule. The value cannot be more than 255 characters.",
+            "MaxAge" => "The time in seconds that your browser is to cache the preflight response for the specified resource."
+          }        
+        ]
+      }
+    LifecycleConfiguration: |
+      {
+        "Rules" => [
+          {
+            "ExpirationDate" => "Indicates when objects are deleted from Amazon S3 and Amazon Glacier. The date value must be in ISO 8601 format. The time is always midnight UTC. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time. You must specify at least one of the following properties: ExpirationDate, ExpirationInDays, NoncurrentVersionExpirationInDays, NoncurrentVersionTransition, or Transition.",
+            "ExpirationInDays" => "Indicates the number of days after creation when objects are deleted from Amazon S3 and Amazon Glacier. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time.",
+            "Id" => "A unique identifier for this rule. The value cannot be more than 255 characters.",
+            "NoncurrentVersionExpirationInDays" => "For buckets with versioning enabled (or suspended), specifies the time, in days, between when a new version of the object is uploaded to the bucket and when old versions of the object expire. When object versions expire, Amazon S3 permanently deletes them. If you specify a transition and expiration time, the expiration time must be later than the transition time.",
+            "NoncurrentVersionTransition" => "For buckets with versioning enabled (or suspended), specifies when non-current objects transition to a specified storage class. If you specify a transition and expiration time, the expiration time must be later than the transition time.",
+            "Prefix" => "Object key prefix that identifies one or more objects to which this rule applies.",
+            "Status" => "Specify either Enabled or Disabled.",
+            "Transition" => "Specifies when an object transitions to a specified storage class. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time."
+          }
+        ]
+      }
+    LoggingConfiguration: |
+      {
+        "DestinationBucketName" => "The name of an Amazon S3 bucket where Amazon S3 store server access log files.",
+        "LogFilePrefix" => "A prefix for the all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket."
+      }
+    NotificationConfiguration: |
+      {
+        "LambdaConfigurations" => [
+          {
+            "Event" => "s3:ObjectCreated:* s3:ObjectCreated:Put s3:ObjectCreated:Post s3:ObjectCreated:Copy s3:ObjectCreated:CompleteMultipartUpload s3:ObjectRemoved:* s3:ObjectRemoved:Delete s3:ObjectRemoved:DeleteMarkerCreated s3:ReducedRedundancyLostObject",
+            "Filter" => {
+              "S3Key" => "Amazon S3 filtering rules that describe for which object key names to send notifications."
+            },
+            "Function" => "The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes when the specified event type occurs."
+          }
+        ],
+        "QueueConfigurations" => [
+           {
+            "Event" => "s3:ObjectCreated:* s3:ObjectCreated:Put s3:ObjectCreated:Post s3:ObjectCreated:Copy s3:ObjectCreated:CompleteMultipartUpload s3:ObjectRemoved:* s3:ObjectRemoved:Delete s3:ObjectRemoved:DeleteMarkerCreated s3:ReducedRedundancyLostObject",
+            "Filter" => {
+              "S3Key" => "Amazon S3 filtering rules that describe for which object key names to send notifications.",
+             "Queue" => "The Amazon Resource Name (ARN) of the Amazon SQS queue that Amazon S3 publishes messages to when the specified event type occurs."
+            }
+           }
+        ],
+        "TopicConfigurations" => [
+           {
+            "Event" => "s3:ObjectCreated:* s3:ObjectCreated:Put s3:ObjectCreated:Post s3:ObjectCreated:Copy s3:ObjectCreated:CompleteMultipartUpload s3:ObjectRemoved:* s3:ObjectRemoved:Delete s3:ObjectRemoved:DeleteMarkerCreated s3:ReducedRedundancyLostObject",
+            "Filter" => {
+              "S3Key" => "Amazon S3 filtering rules that describe for which object key names to send notifications.",
+             "Topic" => "The Amazon SNS topic to which Amazon S3 reports the specified events."
+             }
+           }
+        ]
+      }
+    ReplicationConfiguration: |
+      {
+        "Role" => "The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that Amazon S3 assumes when replicating objects.",
+        "Rules" => [
+          {
+            "Destination" => {
+              "Bucket" => "The Amazon resource name (ARN) of an S3 bucket where Amazon S3 stores replicated objects. ",
+              "StorageClass" => "By default, Amazon S3 uses the storage class of the source object to create object replica. STANDARD | STANDARD_IA | REDUCED_REDUNDANCY"
+            },
+            "Id" => "A unique identifier for the rule. If you don't specify a value, AWS CloudFormation generates a random ID.",
+            "Prefix" => "An object prefix. This rule applies to all Amazon S3 objects with this prefix. To specify all objects in an S3 bucket, specify an empty string.",
+            "Status" => "Enabled | Disabled"
+          }
+        ]
+      }
+    Tags: | 
+      [
+        {
+           "Key" => "Contact",
+           "Value" => "your-email@mybe.com"
+        }     
+      ]
+    VersioningConfiguration: |
+      {
+        "Status" => "Enabled | Disabled"
+      }    
+    WebsiteConfiguration: |
+      {
+        "ErrorDocument" => "The name of the error document for the website.",
+        "IndexDocument" => "The name of the index document for the website.",
+        "RedirectAllRequestsTo" =>  {
+          "HostName" => "Name of the host where requests are redirected.",
+          "Protocol" => "Protocol to use (http or https) when redirecting requests. The default is the protocol that is used in the original request."
+        },
+        "RoutingRules" => [
+          {
+            "RedirectRule" => "Redirect requests to another host, to another page, or with another protocol.",
+            "RoutingRuleCondition" => {
+              "HttpErrorCodeReturnedEquals" => "Applies this redirect if the error code equals this value in the event of an error.",
+              "KeyPrefixEquals" => "The object key name prefix when the redirect is applied. For example, to redirect requests for ExamplePage.html, set the key prefix to ExamplePage.html. To redirect request for all pages with the prefix docs/, set the key prefix to docs/, which identifies all objects in the docs/ folder."
+            }
+          }
+        ]
+      }
+

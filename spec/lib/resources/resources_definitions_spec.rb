@@ -256,5 +256,11 @@ describe "resource definitions" do
     let(:logical_name) { "stream" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS/S3/Bucket" do
+    let(:type) {"AWS::S3::Bucket"}
+    let(:logical_name) { "bucket" }
+    it_behaves_like "general definition"
+  end
 end
 

@@ -21,13 +21,15 @@ module  Cfnlego
 
     # example AutoScaling::AutoScalingGroup
     def type2file
-      @file ||= "#{File.realpath(File.dirname(__FILE__))}/resources/#{@type.gsub(/::/, "/")}.yaml"
+      @file ||= "#{File.realpath(File.dirname(__FILE__))}/resources/#{@type.gsub(/::/, File::SEPARATOR)}.yaml"
     end
 
     def definition
-      @definition ||= YAML.load_file(type2file)
-    rescue
-      $stderr.puts "unknown #{@type}, no matching definition found"
+      if File::exists?(type2file)
+        @definition ||= YAML.load_file(type2file)
+      else
+        raise RuntimeError, "unknown #{@type}, no matching definition found"
+      end
     end
   end
 end

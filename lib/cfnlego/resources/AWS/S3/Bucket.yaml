@@ -42,7 +42,14 @@ AWS::S3::Bucket:
           {
             "Event" => "s3:ObjectCreated:* s3:ObjectCreated:Put s3:ObjectCreated:Post s3:ObjectCreated:Copy s3:ObjectCreated:CompleteMultipartUpload s3:ObjectRemoved:* s3:ObjectRemoved:Delete s3:ObjectRemoved:DeleteMarkerCreated s3:ReducedRedundancyLostObject",
             "Filter" => {
-              "S3Key" => "Amazon S3 filtering rules that describe for which object key names to send notifications."
+              "S3Key" =>{
+                "Rules" => [
+                  {
+                    "Name" => "Whether the filter matches the prefix or suffix of object key names. valid values are: prefix or suffix",
+                    "Value" => "Specifies the object key name prefix or suffix to filter on."
+                  }
+                ]
+              }, 
             },
             "Function" => "The Amazon Resource Name (ARN) of the Lambda function that Amazon S3 invokes when the specified event type occurs."
           }
@@ -51,7 +58,14 @@ AWS::S3::Bucket:
            {
             "Event" => "s3:ObjectCreated:* s3:ObjectCreated:Put s3:ObjectCreated:Post s3:ObjectCreated:Copy s3:ObjectCreated:CompleteMultipartUpload s3:ObjectRemoved:* s3:ObjectRemoved:Delete s3:ObjectRemoved:DeleteMarkerCreated s3:ReducedRedundancyLostObject",
             "Filter" => {
-              "S3Key" => "Amazon S3 filtering rules that describe for which object key names to send notifications.",
+              "S3Key" =>{
+                "Rules" => [
+                  {
+                    "Name" => "Whether the filter matches the prefix or suffix of object key names. valid values are: prefix or suffix",
+                    "Value" => "Specifies the object key name prefix or suffix to filter on."
+                  }
+                ]
+              }, 
              "Queue" => "The Amazon Resource Name (ARN) of the Amazon SQS queue that Amazon S3 publishes messages to when the specified event type occurs."
             }
            }
@@ -60,7 +74,14 @@ AWS::S3::Bucket:
            {
             "Event" => "s3:ObjectCreated:* s3:ObjectCreated:Put s3:ObjectCreated:Post s3:ObjectCreated:Copy s3:ObjectCreated:CompleteMultipartUpload s3:ObjectRemoved:* s3:ObjectRemoved:Delete s3:ObjectRemoved:DeleteMarkerCreated s3:ReducedRedundancyLostObject",
             "Filter" => {
-              "S3Key" => "Amazon S3 filtering rules that describe for which object key names to send notifications.",
+              "S3Key" =>{
+                "Rules" => [
+                  {
+                    "Name" => "Whether the filter matches the prefix or suffix of object key names. valid values are: prefix or suffix",
+                    "Value" => "Specifies the object key name prefix or suffix to filter on."
+                  }
+                ]
+              }, 
              "Topic" => "The Amazon SNS topic to which Amazon S3 reports the specified events."
              }
            }

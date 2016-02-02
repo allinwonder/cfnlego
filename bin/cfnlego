@@ -59,6 +59,10 @@ options[:resources].each do |r|
   end
 end
 
-puts pretty_string Cfnlego::CloudFormation.new(resources).render, 
-                   indent_token: options[:indent_token], 
-                   indent_count: options[:indent_count]
+begin 
+  puts pretty_string Cfnlego::CloudFormation.new(resources).render, 
+                     indent_token: options[:indent_token], 
+                     indent_count: options[:indent_count]
+rescue RuntimeError => e
+  $stderr.puts "Error: #{e.message}"
+end

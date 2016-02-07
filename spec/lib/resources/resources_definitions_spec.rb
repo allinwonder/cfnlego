@@ -71,6 +71,12 @@ describe "resource definitions" do
     it_behaves_like "general definition"
   end
 
+  describe "AWS/Lambda/Permission.yaml" do
+    let(:type) { "AWS::Lambda::Permission" }
+    let(:logical_name) { "Permission" }
+    it_behaves_like "general definition"
+  end
+
   describe "AWS/SNS/Topic.yaml" do
     let(:type) { "AWS::SNS::Topic" }
     let(:logical_name) { "Topic" }

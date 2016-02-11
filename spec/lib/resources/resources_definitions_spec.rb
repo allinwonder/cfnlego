@@ -77,6 +77,12 @@ describe "resource definitions" do
     it_behaves_like "general definition"
   end
 
+  describe "AWS/Lambda/EventSourceMapping.yaml" do
+    let(:type) { "AWS::Lambda::EventSourceMapping" }
+    let(:logical_name) { "EventSource" }
+    it_behaves_like "general definition"
+  end
+
   describe "AWS/SNS/Topic.yaml" do
     let(:type) { "AWS::SNS::Topic" }
     let(:logical_name) { "Topic" }

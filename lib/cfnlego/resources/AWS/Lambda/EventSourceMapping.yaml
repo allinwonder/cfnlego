@@ -1,12 +1,7 @@
 AWS::Lambda::EventSourceMapping:
   Properties: 
-    BatchSize: |
-      The largest number of records that Lambda retrieves from your event source when invoking your function. Your function receives an event with all the retrieved records. Valid range: Minimum value of 1. Maximum value of 10000. 
-    Enabled: |
-      Indicates whether Lambda begins polling the event source.
-    EventSourceArn: |
-      The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB stream that is the source of events. Any record added to this stream can invoke the Lambda function.
-    FunctionName: |
-      The name or ARN of a Lambda function to invoke when Lambda detects an event on the stream.
-    StartingPosition: |
-      The position in the stream where Lambda starts reading.  Valid Values: TRIM_HORIZON | LATEST
+    BatchSize: "\"The largest number of records that Lambda retrieves from your event source when invoking your function. Your function receives an event with all the retrieved records. Valid range: Minimum value of 1. Maximum value of 10000.\""
+    Enabled: "\"Indicates whether Lambda begins polling the event source.\""
+    EventSourceArn: "\"The Amazon Resource Name (ARN) of the Amazon Kinesis or DynamoDB stream that is the source of events. Any record added to this stream can invoke the Lambda function.\""
+    FunctionName: "\"The name or ARN of a Lambda function to invoke when Lambda detects an event on the stream.\""
+    StartingPosition: "\"The position in the stream where Lambda starts reading.  Valid Values: TRIM_HORIZON | LATEST\""

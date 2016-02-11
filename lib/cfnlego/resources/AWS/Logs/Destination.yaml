@@ -1,0 +1,6 @@
+AWS::Logs::Destination:
+  Properties:
+    DestinationName: "\"The name of the CloudWatch Logs destination.\""
+    DestinationPolicy: "\"An AWS Identity and Access Management (IAM) policy that specifies who can write to your destination.\""
+    RoleArn: "\"The Amazon Resource Name (ARN) of an IAM role that permits CloudWatch Logs to send data to the specified AWS resource (TargetArn).\""
+    TargetArn: "\"The ARN of the AWS resource that receives log events. Currently, you can specify only an Amazon Kinesis stream.\""

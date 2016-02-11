@@ -274,5 +274,35 @@ describe "resource definitions" do
     let(:logical_name) { "bucket" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS/Logs/LogGroup" do
+    let(:type) {"AWS::Logs::LogGroup"}
+    let(:logical_name) { "group" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/Logs/LogStream" do
+    let(:type) {"AWS::Logs::LogStream"}
+    let(:logical_name) { "stream" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/Logs/Destination" do
+    let(:type) {"AWS::Logs::Destination"}
+    let(:logical_name) { "destination" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/Logs/MetricFilter" do
+    let(:type) {"AWS::Logs::MetricFilter"}
+    let(:logical_name) { "filter" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/Logs/SubscriptionFilter" do
+    let(:type) {"AWS::Logs::SubscriptionFilter"}
+    let(:logical_name) { "filter" }
+    it_behaves_like "general definition"
+  end
 end
 

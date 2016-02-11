@@ -1,0 +1,4 @@
+AWS::Logs::LogStream:
+  Properties: 
+    LogGroupName: "\"The name of the log group where the log stream is created.\""
+    LogStreamName:  "\"The name of the log stream to create. The name must be unique within the log group.\""

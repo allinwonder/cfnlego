@@ -51,6 +51,7 @@ Example:
 - AWS::EC2::SecurityGroup
 - AWS::EC2::SpotFleet
 - AWS::EC2::Subnet
+- AWS::EC2::SubnetNetworkAclAssociation
 - AWS::EC2::SubnetRouteTableAssociation
 - AWS::EC2::VPC
 - AWS::EC2::VPCDHCPOptionsAssociation
@@ -63,15 +64,21 @@ Example:
 - AWS::IAM::InstanceProfile
 - AWS::IAM::ManagedPolicy
 - AWS::IAM::Role
-- AWS::Kinesis::Stream
 - AWS::KMS::Key
+- AWS::Kinesis::Stream
 - AWS::Lambda::EventSourceMapping
 - AWS::Lambda::Function
 - AWS::Lambda::Permission
+- AWS::Logs::Destination
+- AWS::Logs::LogGroup
+- AWS::Logs::LogStream
+- AWS::Logs::MetricFilter
+- AWS::Logs::SubscriptionFilter
 - AWS::Route53::HealthCheck
 - AWS::Route53::HostedZone
 - AWS::Route53::RecordSet
 - AWS::Route53::RecordSetGroup
+- AWS::S3::Bucket
 - AWS::SNS::Topic
 - AWS::SNS::TopicPolicy
 

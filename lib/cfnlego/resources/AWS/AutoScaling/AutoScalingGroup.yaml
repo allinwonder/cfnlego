@@ -31,7 +31,7 @@ AWS::AutoScaling::AutoScalingGroup:
      MetricsCollection: |
        {
          "Granularity" => "1Minute",
-         "Metrics" => [] #all metrics will be sent to cloudwatch by default
+         "Metrics" => [ "GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances " ]
        }
      MinSize: "1"
      NotificationConfigurations: | 

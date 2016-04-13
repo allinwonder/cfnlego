@@ -11,7 +11,7 @@ AWS::AutoScaling::AutoScalingGroup:
         {
           "MaxBatchSize" => "1",
           "MinInstancesInService" => "1",
-          "PauseTime" => "300",
+          "PauseTime" => "PT1M0S",
           "SuspendProcesses" => ["Launch", "Terminate", "HealthCheck", "ReplaceUnhealthy", "AZRebalance", "AlarmNotification", "ScheduledActions", "AddToLoadBalancer"],
           "WaitOnResourceSignals" => true
         }

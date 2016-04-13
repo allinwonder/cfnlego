@@ -3,7 +3,13 @@ AWS::ECS::Service:
     Cluster: "String"
     DesiredCounti: "Integer"
     LoadBalancers: |
-      [ "elb" ] # Ref("elb")
+      [ 
+        {
+          "ContainerName" => "Name",
+          "ContainerPort" => "8080",
+          "LoadBalancerName" => "ELB Name"
+        }  
+      ] 
     Role: "\"The name or ARN of an AWS Identity and Access Management (IAM) role that allows your Amazon ECS container agent to make calls to your load balancer\""
     TaskDefinition: "\"task-def # Ref(task) The family, family and revision (family:revision), or ARN of the task definition that you want to run on the cluster.\""
     

@@ -1,0 +1,10 @@
+AWS::ElastiCache::ParameterGroup:
+  Properties:
+    CacheParameterGroupFamily: "\"The name of the cache parameter group family that the cache parameter group can be used with.\""
+    Description: "\"The description for the Cache Parameter Group.\""
+    Properties: |
+      {
+        "cas_disabled" => "1",
+        "chunk_size_growth_factor" => "1.02"
+      }
+

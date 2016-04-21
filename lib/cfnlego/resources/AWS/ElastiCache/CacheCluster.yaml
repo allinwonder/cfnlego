@@ -1,0 +1,40 @@
+AWS::ElastiCache::CacheCluster:
+  Properties:
+    AutoMinorVersionUpgrade: "\"true\""
+    AZMode: "\"single-az or cross-az\""
+    CacheNodeType: "\"t2.micro, cache.t2.small, cache.t2.medium, cache.m3.medium, cache.m3.large, cache.m3.xlarge, cache.m3.2xlarge\""
+    CacheParameterGroupName: "\"The name of the cache parameter group that is associated with this cache cluster.\""
+    CacheSecurityGroupNames: |
+      [ "A list of cache security group names that are associated with this cache cluster" ]
+    CacheSubnetGroupName: "\"The cache subnet group that you associate with a cache cluster.\""
+    ClusterName: "\"A name for the cache cluster. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the cache cluster. The name must contain 1 to 20 alphanumeric characters or hyphens. The name must start with a letter and cannot end with a hyphen or contain two consecutive hyphens.\""
+    Engine: "\"memcached or redis\"" 
+    EngineVersion: "\"The version of the cache engine to be used for this cluster.\""
+    NotificationTopicArn: "\"The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic to which notifications\""
+    NumCacheNodes: "\"The number of cache nodes that the cache cluster should have.\""
+    Port: "\"The port number on which each of the cache nodes will accept connections.\"" 
+    PreferredAvailabilityZone: "\"The Amazon EC2 Availability Zone in which the cache cluster is created.\""
+    PreferredAvailabilityZones: |
+      [
+        "For Memcached cache clusters, the list of Availability Zones in which cache nodes are created. The number of Availability Zones listed must equal the number of cache nodes.", 
+        "For example, if you want to create three nodes in two different Availability Zones, you can specify [\"us-east-1a\", \"us-east-1a\", \"us-east-1b\"], which would create two nodes in us-east-1a and one node in us-east-1b.",
+        "If you specify a subnet group and you're creating your cache cluster in a VPC, you must specify Availability Zones that are associated with the subnets in the subnet group that you've chosen.",
+        "If you want all the nodes in the same Availability Zone, use the PreferredAvailabilityZone property or repeat the Availability Zone multiple times in the list."
+      ]
+    PreferredMaintenanceWindow: "\"The weekly time range (in UTC) during which system maintenance can occur.\""
+    SnapshotArns: "\"The ARN of the snapshot file that you want to use to seed a new Redis cache cluster.\""
+    SnapshotName: "\"The name of a snapshot from which to restore data into a new Redis cache cluster.\""
+    SnapshotRetentionLimit: "\"For Redis cache clusters, the number of days for which ElastiCache retains automatic snapshots before deleting them. \""
+    SnapshotWindow: "\"For Redis cache clusters, the daily time range (in UTC) during which ElastiCache will begin taking a daily snapshot of your node group. For example, you can specify 05:00-09:00.\""
+    Tags: |
+      [
+        {
+          "Key" => "Name",
+          "Value" => "A Cluster"
+        }
+      ]
+    VpcSecurityGroupIds: |
+      [
+        "A list of VPC security group IDs. If your cache cluster isn't in a VPC, specify the CacheSecurityGroupNames property instead",
+        "You must use the AWS::EC2::SecurityGroup resource instead of the AWS::ElastiCache::SecurityGroup resource in order to specify an ElastiCache security group that is in a VPC. In addition, if you use the default VPC for your AWS account, you must use the Fn::GetAtt function and the GroupId attribute to retrieve security group IDs (instead of the Ref function). To see a sample template, see the Template Snippet section."
+      ]

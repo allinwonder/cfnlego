@@ -1,0 +1,5 @@
+AWS::ElastiCache::SubnetGroup:
+  Properties:
+    Description: "\"The description for the cache subnet group.\""
+    SubnetIds: |
+      [ "The Amazon EC2 subnet IDs for the cache subnet group." ]

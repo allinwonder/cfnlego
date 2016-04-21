@@ -304,5 +304,41 @@ describe "resource definitions" do
     let(:logical_name) { "filter" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS/ElastiCache/CacheCluster" do
+    let(:type) {"AWS::ElastiCache::CacheCluster"}
+    let(:logical_name) { "elasticache" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/ElastiCache/ParameterGroup" do
+    let(:type) {"AWS::ElastiCache::ParameterGroup"}
+    let(:logical_name) { "parameters" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/ElastiCache/ReplicationGroup" do
+    let(:type) {"AWS::ElastiCache::ReplicationGroup"}
+    let(:logical_name) { "replication-group" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/ElastiCache/SecurityGroup" do
+    let(:type) {"AWS::ElastiCache::SecurityGroup"}
+    let(:logical_name) { "securityGroup" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/ElastiCache/SecurityGroupIngress" do
+    let(:type) {"AWS::ElastiCache::SecurityGroupIngress"}
+    let(:logical_name) { "securityGroupIngress" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/ElastiCache/SubnetGroup" do
+    let(:type) {"AWS::ElastiCache::SubnetGroup"}
+    let(:logical_name) { "subnetGroup" }
+    it_behaves_like "general definition"
+  end
 end
 

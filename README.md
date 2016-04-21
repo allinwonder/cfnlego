@@ -60,6 +60,12 @@ Example:
 - AWS::ECS::Cluster
 - AWS::ECS::Service
 - AWS::ECS::TaskDefinition
+- AWS::ElastiCache::CacheCluster
+- AWS::ElastiCache::ParameterGroup
+- AWS::ElastiCache::ReplicationGroup
+- AWS::ElastiCache::SecurityGroup
+- AWS::ElastiCache::SecurityGroupIngress
+- AWS::ElastiCache::SubnetGroup
 - AWS::ElasticLoadBalancing::LoadBalancer
 - AWS::IAM::InstanceProfile
 - AWS::IAM::ManagedPolicy

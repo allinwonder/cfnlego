@@ -44,6 +44,7 @@ Example:
 - AWS::EC2::EIP
 - AWS::EC2::Instance
 - AWS::EC2::InternetGateway
+- AWS::EC2::NatGateway
 - AWS::EC2::NetworkAcl
 - AWS::EC2::NetworkAclEntry
 - AWS::EC2::Route
@@ -70,8 +71,8 @@ Example:
 - AWS::IAM::InstanceProfile
 - AWS::IAM::ManagedPolicy
 - AWS::IAM::Role
-- AWS::KMS::Key
 - AWS::Kinesis::Stream
+- AWS::KMS::Key
 - AWS::Lambda::EventSourceMapping
 - AWS::Lambda::Function
 - AWS::Lambda::Permission

@@ -340,5 +340,10 @@ describe "resource definitions" do
     let(:logical_name) { "subnetGroup" }
     it_behaves_like "general definition"
   end
-end
 
+  describe "AWS/EC2::NatGateway" do
+    let(:type) {"AWS::EC2::NatGateway"}
+    let(:logical_name) { "gw" }
+    it_behaves_like "general definition"
+  end
+end

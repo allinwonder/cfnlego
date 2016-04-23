@@ -1,0 +1,4 @@
+AWS::EC2::NatGateway:
+  Properties:
+    AllocationId: "\"The allocation ID of an Elastic IP address to associate with the NAT gateway\""
+    SubnetId: "\"The public subnet in which to create the NAT gateway.\""

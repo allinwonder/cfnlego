@@ -68,6 +68,7 @@ Example:
 - AWS::ElastiCache::SecurityGroupIngress
 - AWS::ElastiCache::SubnetGroup
 - AWS::ElasticLoadBalancing::LoadBalancer
+- AWS::Events::Rule
 - AWS::IAM::InstanceProfile
 - AWS::IAM::ManagedPolicy
 - AWS::IAM::Role

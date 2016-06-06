@@ -346,4 +346,10 @@ describe "resource definitions" do
     let(:logical_name) { "gw" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS/Events::Rule" do
+    let(:type) {"AWS::Events::Rule"}
+    let(:logical_name) { "event_rule" }
+    it_behaves_like "general definition"
+  end
 end

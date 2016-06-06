@@ -1,0 +1,24 @@
+AWS::Events::Rule:
+  Properties:
+    Description: "\"descriptions\""
+    EventPattern: |
+      {
+        "reference" => "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CloudWatchEventsandEventPatterns.html"
+      }
+    Name: |
+      "A name for the rule. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the rule name."
+    RoleArn: |
+      "The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants CloudWatch Events permission to make calls to target services, such as AWS Lambda (Lambda) or Amazon Kinesis streams"
+    ScheduleExpression: |
+      "cron(<Fields>) or rate(<Value> <Unit>) http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/ScheduledEvents.html"
+    State: |
+      "ENABLED | DISABLED"
+    Targets: |
+      [ 
+          {
+            "Arn" => "ARN",
+            "Id"  => "A unique identifier for the target.",
+            "Input" => "A JSON-formatted text string that is passed to the target. This value overrides the matched event.",
+            "InputPath" => "When you don't want to pass the entire matched event, the JSONPath that describes which part of the event to pass to the target."
+          }
+      ]

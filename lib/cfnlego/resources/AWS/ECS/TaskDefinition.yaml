@@ -7,41 +7,61 @@ AWS::ECS::TaskDefinition:
           "Host" => {"SourcePath" => "String"} # Determines whether your data volume persists on the host container instance and at the location where it is stored.
         }
       ]
-    ContainerDefinitions: |
-      [
-        {
-          "Command"      => ["The CMD value to pass to the container."],
-          "Cpu"          => "Integer", #The minimum number of CPU units to reserve for the container. 
-          "EntryPoint"   => ["The ENTRYPOINT value to pass to the container."],
-          "Environment"  => [
-            {
-              "Name"  => "String",
-              "Value" => "String"
-            }
-          ],
-          "Essential"    => "Boolean", # Indicates whether the task stops if this container fails. If you specify true and the container fails, all other containers in the task stop. If you specify false and the container fails, none of the other containers in the task are affected. This value is true by default.
-          "Image"        => "String", # The image to use for a container, which is passed directly to the Docker daemon. You can use images in the Docker Hub registry or specify other repositories (repository-url/image:tag).
-          "Links"        => ["container-name"], # The name of another container to connect to. With links, containers can communicate with each other without using port mappings.
+  ContainerDefinitions: |
+    [
+      {
+        "Command"      => ["The CMD value to pass to the container."],
+        "Cpu"          => "Integer", #The minimum number of CPU units to reserve for the container. 
+        "DisableNetworking" => "false",
+        "DnsSearchDomains" => [ "example.com" ],
+        "DnsServers" => [ "10.0.0.1" ],
+        "DockerLabels" => { "key" => "value", "key" => "value" },
+        "DockerSecurityOptions" => [], #The Amazon ECS container agent running on a container instance must register with the ECS_SELINUX_CAPABLE=true or ECS_APPARMOR_CAPABLE=true environment variables before containers placed on that instance can use these security options.
+        "EntryPoint"   => ["The ENTRYPOINT value to pass to the container."],
+        "Environment"  => [
+          {
+            "Name"  => "String",
+            "Value" => "String"
+          }
+        ],
+        "ExtraHosts" => [], #A list of hostnames and IP address mappings to append to the /etc/hosts file on the container.
+        "Hostname" => "my-host",
+        "Essential"    => "Boolean", # Indicates whether the task stops if this container fails. If you specify true and the container fails, all other containers in the task stop. If you specify false and the container fails, none of the other containers in the task are affected. This value is true by default.
+        "Image"        => "String", # The image to use for a container, which is passed directly to the Docker daemon. You can use images in the Docker Hub registry or specify other repositories (repository-url/image:tag).
+        "Links"        => ["container-name"], # The name of another container to connect to. With links, containers can communicate with each other without using port mappings.
+        "LogConfiguration" => {
+          "LogDriver" => "",
+          "Options" => { "key" => "value" }
+          },
           "Memory"       => "Integer", # The number of MiB of memory to reserve for the container. If your container attempts to exceed the allocated memory, the container is killed.
           "MountPoints"  => [
             {
               "ContainerPath" => "String",
               "SourceVolume" => "String",
               "ReadOnly" => "Boolean"
-            }
-          ], 
-          "Name"         => "String", # A name for the container.
-          "PortMappings" => [
-            {
-              "ContainerPort" => "Integer",
-              "HostPort"      => "Integer"
-            }
-          ],
-          "VolumesFrom"  => [
-            {
-              "SourceContainer" => "String",
-              "ReadOnly"        => "Boolean"
-            }
-          ]
-        }        
-      ]
+          }
+        ], 
+        "Name"         => "String", # A name for the container.
+        "PortMappings" => [
+          {
+            "ContainerPort" => "Integer",
+            "HostPort"      => "Integer"
+          }
+        ],
+        "VolumesFrom"  => [
+          {
+            "SourceContainer" => "String",
+            "ReadOnly"        => "Boolean"
+          }
+        ],
+        "Privileged" => "false",
+        "ReadonlyRootFilesystem" => "true",
+        "Ulimits" => {
+          "HardLimit" => "12345",
+          "Name" => "core | cpu | data | fsize | locks | memlock | msgqueue | nice | nofile | nproc | rss | rtprio | rttime | sigpending | stack",
+          "SoftLimit" => "1234"
+          },
+          "User" => "user-name",
+          "WorkingDirectory" =>  "/pwd"
+      }        
+    ]

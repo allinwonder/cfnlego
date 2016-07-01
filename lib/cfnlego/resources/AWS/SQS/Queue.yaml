@@ -1,0 +1,22 @@
+AWS::SQS::Queue:
+  Properties: 
+    DelaySeconds: "\"Integrer, Valid value from 0 to 900, Default: 0\""
+    MaximumMessageSize: "\"The limit of how many bytes a message can contain before Amazon SQS rejects it. You can specify an integer value from 1024 bytes (1 KiB) to 262144 bytes (256 KiB). The default value is 262144 (256 KiB).\""
+    MessageRetentionPeriod: "\"The number of seconds Amazon SQS retains a message. You can specify an integer value from 60 seconds (1 minute) to 1209600 seconds (14 days). The default value is 345600 seconds (4 days).\""
+    QueueName: "\"A name for the queue. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the queue name. For more information\""
+    ReceiveMessageWaitTimeSeconds: "\"Specifies the duration, in seconds, that the ReceiveMessage action call waits until a message is in the queue in order to include it in the response, as opposed to returning an empty response if a message is not yet available. You can specify an integer from 1 to 20. The short polling is used as the default or when you specify 0 for this property.\""
+    RedrivePolicy: |
+      {
+        "deadLetterTargetArn" => "The Amazon Resource Name (ARN) of the dead letter queue to which the messages are sent to after the maxReceiveCount value has been exceeded.",
+        "maxReceiveCount" => "The number of times a message is delivered to the source queue before being sent to the dead letter queue."
+      }  
+    VisibilityTimeout: "\"The length of time during which the queue will be unavailable once a message is delivered from the queue. This blocks other components from receiving the same message and gives the initial component time to process and delete the message from the queue.  Values must be from 0 to 43200 seconds (12 hours). If no value is specified, the default value of 30 seconds will be used.\""
+    DisplayName: "\"string to identify the topici, optional field\""
+    Subscription: |
+      [
+        {
+           "Endpoint" => "http|https|@|phone-number|SQS Queue|EndpointArn of Mobile App/device|Lambda Arn",
+           "Protocol" => "http|https|email|email-json|sms|sqs|application|lambda"
+        }
+      ]
+    TopicName: "\"A name for the topic, optional\""

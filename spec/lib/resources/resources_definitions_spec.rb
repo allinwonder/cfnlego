@@ -352,4 +352,10 @@ describe "resource definitions" do
     let(:logical_name) { "event_rule" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS/SQS::Queue" do
+    let(:type) {"AWS::SQS::Queue"}
+    let(:logical_name) { "queue" }
+    it_behaves_like "general definition"
+  end
 end

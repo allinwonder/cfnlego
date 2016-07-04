@@ -1,0 +1,20 @@
+AWS::SQS::QueuePolicy:
+  Properties: 
+    PolicyDocument: |
+      {
+        "Id"          => "MyQueuePolicy",
+        "Version"     => "2012-10-17",
+        "Statement"   => [ {
+          "Sid"       => "Allow-User-SendMessage",
+          "Effect"    => "Allow",
+          "Principal" => {
+            "AWS"     => "arn:aws:iam::123456789012:user/myapp"
+          },
+          "Action"    => [ "sqs:SendMessage" ],
+          "Resource"  => "*"
+          } ]
+      }
+    Queues: |
+      [
+        "The URLs of the queues to which you want to add the policy. You can use the Ref function to specify an AWS::SQS::Queue resource."
+      ]

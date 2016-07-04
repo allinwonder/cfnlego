@@ -358,4 +358,10 @@ describe "resource definitions" do
     let(:logical_name) { "queue" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS/SQS::QueuePolicy" do
+    let(:type) {"AWS::SQS::QueuePolicy"}
+    let(:logical_name) { "policy" }
+    it_behaves_like "general definition"
+  end
 end

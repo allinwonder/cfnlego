@@ -72,8 +72,8 @@ Example:
 - AWS::IAM::InstanceProfile
 - AWS::IAM::ManagedPolicy
 - AWS::IAM::Role
-- AWS::Kinesis::Stream
 - AWS::KMS::Key
+- AWS::Kinesis::Stream
 - AWS::Lambda::EventSourceMapping
 - AWS::Lambda::Function
 - AWS::Lambda::Permission
@@ -89,7 +89,8 @@ Example:
 - AWS::S3::Bucket
 - AWS::SNS::Topic
 - AWS::SNS::TopicPolicy
-
+- AWS::SQS::Queue
+- AWS::SQS::QueuePolicy
 
 ### License
 

@@ -1,0 +1,10 @@
+AWS::WAF::IPSet:
+  Properties: 
+    IPSetDescriptors: |
+      [
+        {
+          "Type" => "IPV4",
+          "Value"=> "AWS WAF supports only /8, /16, /24, and /32 IP addresses."
+        }
+      ]
+    Name: "\"A friendly name or description of the IPSet.\""

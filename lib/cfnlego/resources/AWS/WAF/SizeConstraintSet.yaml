@@ -1,0 +1,15 @@
+AWS::WAF::SizeConstraintSet:
+  Properties: 
+    SizeConstraints: |
+      [
+        {
+          "ComparisonOperator" => "EQ | NE | LE | LT | GE | GT",
+          "FieldToMatch" => {
+              "Data" => "If you specify HEADER for the Type property, the name of the header that AWS WAF searches for, such as User-Agent or Referer. If you specify any other value for the Type property, do not specify this property.",
+              "Type" => "URI | QUERY_STRING | HEADER | METHOD | BODY"
+            },
+          "Size" => "Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).",
+          "TextTransformation" => "NONE | COMPRESS_WHITE_SPACE | HTML_ENTITY_DECODE | LOWERCASE | CMD_LINE | URL_DECODE"
+        }
+      ]
+    Name: "\"A friendly name or description of the SizeConstraintSet.\""

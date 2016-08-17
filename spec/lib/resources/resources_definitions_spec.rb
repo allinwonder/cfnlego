@@ -364,4 +364,47 @@ describe "resource definitions" do
     let(:logical_name) { "policy" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS/WAF::WebACL" do
+    let(:type) {"AWS::WAF::WebACL"}
+    let(:logical_name) { "acl" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/WAF::Rule" do
+    let(:type) {"AWS::WAF::Rule"}
+    let(:logical_name) { "rule" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/WAF::IPSet" do
+    let(:type) {"AWS::WAF::IPSet"}
+    let(:logical_name) { "ipset" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/WAF::SizeContraintSet" do
+    let(:type) {"AWS::WAF::SizeConstraintSet"}
+    let(:logical_name) { "sizeconstrain" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/WAF::SqlInjectionMatchSet" do
+    let(:type) {"AWS::WAF::SqlInjectionMatchSet"}
+    let(:logical_name) { "sqlinjection" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS/WAF::XssMatchSet" do
+    let(:type) {"AWS::WAF::XssMatchSet"}
+    let(:logical_name) { "xss" }
+    it_behaves_like "general definition"
+  end
+
+
+  describe "AWS/WAF::ByteMatchSet" do
+    let(:type) {"AWS::WAF::ByteMatchSet"}
+    let(:logical_name) { "bytematchset" }
+    it_behaves_like "general definition"
+  end
 end

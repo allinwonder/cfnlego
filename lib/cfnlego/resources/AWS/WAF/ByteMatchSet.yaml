@@ -1,0 +1,16 @@
+AWS::WAF::ByteMatchSet:
+  Properties: 
+    ByteMatchTuples: |
+      [
+        {
+          "FieldToMatch" => {
+            "Data" => "If you specify HEADER for the Type property, the name of the header that AWS WAF searches for, such as User-Agent or Referer. If you specify any other value for the Type property, do not specify this property.",
+            "Type" => "URI | QUERY_STRING | HEADER | METHOD | BODY"
+          },
+          "PositionalConstraint" => "EXACTLY | STARTS_WITH | ENDS_WITH | CONTAINS | CONTAINS_WORD",
+          "TargetString" => "The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you specified in FieldToMatch. The maximum length of the value is 50 bytes.  Valid values depend on the values that you specified for FieldToMatch: HEADER: The value that you want AWS WAF to search for in the request header that you specified in FieldToMatch, for example, the value of the User-Agent or Referer header.  METHOD: The HTTP method, which indicates the type of operation specified in the request. CloudFront supports the following methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT.  QUERY_STRING: The value that you want AWS WAF to search for in the query string, which is the part of a URL that appears after a ? character.  URI: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, for example, /images/daily-ad.jpg.  BODY: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first 8192 bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see CreateSizeConstraintSet.  If TargetString includes alphabetic characters A-Z and a-z, note that the value is case sensitive.",
+          "TargetStringBase64" => "The base64-encoded value that AWS WAF searches for. AWS CloudFormation sends this value to AWS WAF without encoding it. You must specify this property or the TargetString property.",
+          "TextTransformation" => "NONE | COMPRESS_WHITE_SPACE | HTML_ENTITY_DECODE | LOWERCASE | CMD_LINE | URL_DECODE"
+        }
+      ]
+    Name: "\"A friendly name or description of the ByteMatchSet.\""

@@ -1,0 +1,16 @@
+AWS::WAF::WebACL:
+  Properties: 
+    DefaultAction: |
+      {
+        "Type" => "The action that Amazon CloudFront (CloudFront) or AWS WAF takes when a web request matches all conditions in the rule, such as allow, block, or count the request. Ex: BLOCK | ALLOW | COUNT"
+      }
+    MetricName: "\"A friendly name or description for the Amazon CloudWatch metric of this web ACL.\""
+    Name: "\"A friendly name or description of the web ACL\""
+    Rules: |
+      [
+        {
+          "Action" => "BLOCK | ALLOW | COUNT",
+          "Priority" => "The order in which AWS WAF evaluates the rules in a web ACL. AWS WAF evaluates rules with a lower value before rules with a higher value. The value must be a unique integer. If you have multiple rules in a web ACL, the priority numbers do not need to be consecutive.",
+          "RuleId" => "The ID of an AWS WAF rule to associate with a web ACL."
+        }
+      ]

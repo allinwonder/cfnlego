@@ -19,7 +19,7 @@ module  Cfnlego
 
     private
 
-    # example AutoScaling::AutoScalingGroup
+    # example AWS::AutoScaling::AutoScalingGroup
     def type2file
       @file ||= "#{File.realpath(File.dirname(__FILE__))}/resources/#{@type.gsub(/::/, File::SEPARATOR)}.yaml"
     end

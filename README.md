@@ -27,9 +27,9 @@ Usage: cfnlego --reousrce resource [options]
     -v, --version                    Show version
 Example:
   cfnlego                                           \
-    --reousrce AutoScaling::AutoScalingGroup,ASG    \
-    --reousrce IAM::Role,Role                       \
-    --reousrce IAM::InstanceProfile,InstanceProfile \
+    --reousrce AWS::AutoScaling::AutoScalingGroup,ASG    \
+    --reousrce AWS::IAM::Role,Role                       \
+    --reousrce AWS::IAM::InstanceProfile,InstanceProfile \
 ```
 
 ### Current Supported Resources

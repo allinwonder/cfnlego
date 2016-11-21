@@ -82,6 +82,7 @@ Example:
 - AWS::Logs::LogStream
 - AWS::Logs::MetricFilter
 - AWS::Logs::SubscriptionFilter
+- AWS::RDS::EventSubscription
 - AWS::Route53::HealthCheck
 - AWS::Route53::HostedZone
 - AWS::Route53::RecordSet

@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.name          = "cfnlego"
   spec.version       = Cfnlego::VERSION
   spec.authors       = ["Kevin Yung"]
-  spec.email         = ["me@howareyoukevin.com"]
+  spec.email         = ["jwrong@gmail.com"]
   spec.licenses      = ["MIT"]
 
   spec.summary       = %q{Command Line tool to bootstrap CloudForamtion development with cfndsl}

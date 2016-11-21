@@ -1,0 +1,39 @@
+AWS::RDS::EventSubscription:
+  Properties:
+    Enabled: "true"
+    EventCategories: |
+      [
+       "restoration", 
+       "maintenance", 
+       "recovery",
+       "backup",
+       "notification",
+       "availability",
+       "failure",
+       "deletion",
+       "creation",
+       "low storage",
+       "configuration change",
+       "failover",
+       "read replica",
+       "failure",
+       "configuration change",
+       "configuration change",
+       "deletion",
+       "restoration",
+       "creation",
+       "notification",
+       "failure",
+       "failover",
+       "notification",
+       "backup" 
+      ]
+    SnsTopicArn: "\"topic-arn\""
+    SourceIds: |
+      [ 
+        "instance-id-a", 
+        "instance-id-b", 
+        "you can leave this blank, so it subscribe to all resources" 
+      ]
+    SourceType: |
+      "db-instance|db-security-group|db-parameter-group|db-snapshot|db-cluster|db-cluster-snapshot"

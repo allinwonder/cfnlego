@@ -6,7 +6,7 @@ require 'ruby-beautify'
 include RubyBeautify
 options = {resources: [], indent_token: " ", indent_count: 2}
 OptionParser.new do |opts|
-  opts.banner = "Usage: cfnlego --reousrce resource [options]"
+  opts.banner = "Usage: cfnlego --resource resource [options]"
 
   opts.on("-r", "--resource RESOURCE_TYPE,RESOURCE_LOGICAL_NAME", "Add resource type and logical name") do |r|
     options[:resources] << r
@@ -35,9 +35,9 @@ OptionParser.new do |opts|
     puts <<-EXAMPLE
 Example:
   cfnlego                                           \\
-    --reousrce AWS::AutoScaling::AutoScalingGroup,ASG    \\
-    --reousrce AWS::IAM::Role,Role                       \\
-    --reousrce AWS::IAM::InstanceProfile,InstanceProfile \\
+    --resource AWS::AutoScaling::AutoScalingGroup,ASG    \\
+    --resource AWS::IAM::Role,Role                       \\
+    --resource AWS::IAM::InstanceProfile,InstanceProfile \\
 EXAMPLE
 
     exit

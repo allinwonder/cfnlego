@@ -413,4 +413,10 @@ describe "resource definitions" do
     let(:logical_name) { "rdsEventScubscription" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS::CodeCommit::Repository" do
+    let(:type) {"AWS::CodeCommit::Repository"}
+    let(:logical_name) { "repo" }
+    it_behaves_like "general definition"
+  end
 end

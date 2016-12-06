@@ -1,0 +1,15 @@
+AWS::CodeCommit::Repository:
+  Properties:
+    RepositoryDescription: "\"String\""
+    RepositoryName: "\"String\""
+    Triggers: |
+      [
+        {
+            "Branches" => [ "String" ],
+            "CustomData" => "When an event is triggered, additional information that AWS CodeCommit includes when it sends information to the target.",
+            "DestinationArn" => "The Amazon Resource Name (ARN) of the resource that is the target for this trigger.",
+            "Events" => ["all", "updateReference", "createReference", "deleteReference"],
+            "Name" => "The name of the trigger."
+        }
+      ]
+  

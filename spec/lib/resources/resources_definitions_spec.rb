@@ -425,4 +425,16 @@ describe "resource definitions" do
     let(:logical_name) { "repo" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS::EMR::InstanceGroupConfig" do
+    let(:type) {"AWS::EMR::InstanceGroupConfig"}
+    let(:logical_name) { "repo" }
+    it_behaves_like "general definition"
+  end
+ 
+  describe "AWS::EMR::Step" do
+    let(:type) {"AWS::EMR::Step"}
+    let(:logical_name) { "EMRStep" }
+    it_behaves_like "general definition"
+  end
 end

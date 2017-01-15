@@ -1,0 +1,20 @@
+AWS::EMR::Step:
+  Properties:
+    ActionOnFailure: |
+      "AWS CloudFormation supports CONTINUE and CANCEL_AND_WAIT."
+    HadoopJarStep: |
+      {
+        "Args" => ["A list of command line arguments passed to the JAR file's main function when the function is executed."],
+        "Jar" => "A path to the JAR file that Amazon EMR runs for the job flow step.",
+        "MainClass" => "The name of the main class in the specified JAR file. If you don't specify a value, you must specify a main class in the JAR file's manifest file.",
+        "StepProperties" => [
+          {
+            "Key" => "A list of Java properties that are set when the job flow step runs.",
+            "Value" => "1024"
+          }
+        ]
+      }
+    JobFlowId: |
+      "lib/cfnlego/resources/AWS/EMR/Cluster.yaml"
+    Name: |
+      "A name for the job flow step."

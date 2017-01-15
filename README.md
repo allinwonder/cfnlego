@@ -17,7 +17,7 @@ to generate a `cfndsl` template, provide the resource types and their logical na
 $ gem install cfnlego
 
 $ cfnlego --help
-Usage: cfnlego --reousrce resource [options]
+Usage: cfnlego --resource resource [options]
     -r RESOURCE_TYPE,RESOURCE_LOGICAL_NAME,
         --resource                   Add resource type and logical name
     -i, --indent TOKEN               Use TOKEN for indent character (default space)
@@ -27,9 +27,9 @@ Usage: cfnlego --reousrce resource [options]
     -v, --version                    Show version
 Example:
   cfnlego                                           \
-    --reousrce AWS::AutoScaling::AutoScalingGroup,ASG    \
-    --reousrce AWS::IAM::Role,Role                       \
-    --reousrce AWS::IAM::InstanceProfile,InstanceProfile \
+    --resource AWS::AutoScaling::AutoScalingGroup,ASG    \
+    --resource AWS::IAM::Role,Role                       \
+    --resource AWS::IAM::InstanceProfile,InstanceProfile \
 ```
 
 ### Current Supported Resources

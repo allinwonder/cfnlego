@@ -419,4 +419,10 @@ describe "resource definitions" do
     let(:logical_name) { "repo" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS::EMR::Cluster" do
+    let(:type) {"AWS::EMR::Cluster"}
+    let(:logical_name) { "repo" }
+    it_behaves_like "general definition"
+  end
 end

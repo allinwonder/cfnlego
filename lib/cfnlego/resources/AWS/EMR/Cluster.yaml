@@ -1,0 +1,122 @@
+AWS::EMR::Cluster:
+  Properties:
+    AdditionalInfo: |
+      {
+        "string" => "string"
+      }
+    Applications: |
+      [ 
+        {
+          "AdditionalInfo" => { "string" => "String"},
+          "Args" => [],
+          "Name" => "Zookeeper",
+          "Version" => "4.3"
+        }
+      ]
+    BootstrapActions: |
+      [
+        {
+          "Name" => "The name of the bootstrap action to add to your cluster.",
+          "ScriptBootstrapAction" => {"Path" => "/path/to/s3"}
+        }
+      ]
+    Configurations: |
+      [
+        {
+          "Classification" => "The name of an application-specific configuration file.",
+          "ConfigurationProperties" => { "The settings that you want to change in the application-specific configuration file." => "http://docs.aws.amazon.com//ElasticMapReduce/latest/ReleaseGuide/emr-configure-apps.html" },
+          "Configurations" => [
+            "A list of configurations to apply to this configuration. " => "http://docs.aws.amazon.com//ElasticMapReduce/latest/ReleaseGuide/emr-configure-apps.html"
+          ]
+        } 
+      ]
+    Instances: |
+      {
+        "AdditionalMasterSecurityGroups" => [ "A list of additional EC2 security group IDs to assign to the master instance" ],
+        "AdditionalSlaveSecurityGroups" => [ "A list of additional EC2 security group IDs to assign to the slave instances (slave nodes) in your Amazon EMR cluster." ],
+        "CoreInstanceGroup" => {
+          "BidPrice" => "in USD",
+          "Configurations" => [
+            {
+              "Classification" => "The name of an application-specific configuration file.",
+              "ConfigurationProperties" => {"The settings that you want to change in the application-specific configuration file." => "http://docs.aws.amazon.com//ElasticMapReduce/latest/ReleaseGuide/emr-configure-apps.html"},
+              "Configurations" => [
+                "A list of configurations to apply to this configuration. " => "http://docs.aws.amazon.com//ElasticMapReduce/latest/ReleaseGuide/emr-configure-apps.html"
+              ]
+            }
+          ],
+          "EbsConfiguration" => {
+            "EbsBlockDeviceConfigs" => [
+              {
+                "VolumeSpecification" => {
+                  "Iops" => 1000,
+                  "SizeInGB" => 1000,
+                  "VolumeType" => "standard | io1 | gp2 | sc1 | st1"
+                },
+                "VolumesPerInstance" => "The number of Amazon EBS volumes that you want to create for each instance in the EMR cluster or instance group."
+              }
+            ],
+            "EbsOptimized" => true
+          },
+          "InstanceCount" => "The number of instances to launch in the instance group.",
+          "InstanceType" => "The EC2 instance type for all instances in the instance group.",
+          "Market" => "ON_DEMAND or SPOT",
+          "Name" => "A name for the instance group."
+        },
+        "Ec2KeyName" => "The name of an Amazon Elastic Compute Cloud (Amazon EC2) key pair, ",
+        "Ec2SubnetId" => "The ID of a subnet where you want to launch your instances.",
+        "EmrManagedMasterSecurityGroup" => "The ID of an EC2 security group (managed by Amazon EMR) that is assigned to the master instance (master node) in your Amazon EMR cluster.",
+        "EmrManagedSlaveSecurityGroup" => "The ID of an EC2 security group (managed by Amazon EMR) that is assigned to the slave instances (slave nodes) in your Amazon EMR cluster.",
+        "HadoopVersion" => "1.0.3, 2.2.0, or 2.4.0",
+        "MasterInstanceGroup" => {
+          "BidPrice" => "in USD",
+          "Configurations" => [
+            {
+              "Classification" => "The name of an application-specific configuration file.",
+              "ConfigurationProperties" => {"The settings that you want to change in the application-specific configuration file." => "http://docs.aws.amazon.com//ElasticMapReduce/latest/ReleaseGuide/emr-configure-apps.html"},
+              "Configurations" => [
+                "A list of configurations to apply to this configuration. " => "http://docs.aws.amazon.com//ElasticMapReduce/latest/ReleaseGuide/emr-configure-apps.html"
+              ]
+            }
+          ],
+          "EbsConfiguration" => {
+            "EbsBlockDeviceConfigs" => [
+              {
+                "VolumeSpecification" => {
+                  "Iops" => 1000,
+                  "SizeInGB" => 1000,
+                  "VolumeType" => "standard | io1 | gp2 | sc1 | st1"
+                },
+                "VolumesPerInstance" => "The number of Amazon EBS volumes that you want to create for each instance in the EMR cluster or instance group."
+              }
+            ],
+            "EbsOptimized" => true
+          },
+          "InstanceCount" => "The number of instances to launch in the instance group.",
+          "InstanceType" => "The EC2 instance type for all instances in the instance group.",
+          "Market" => "ON_DEMAND or SPOT",
+          "Name" => "A name for the instance group."
+        },
+        "Placement" => "The Availability Zone (AZ) in which the job flow runs. not required",
+        "ServiceAccessSecurityGroup" => "The ID of an EC2 security group (managed by Amazon EMR) that services use to access clusters in private subnets.",
+        "TerminationProtected" => true
+      }
+    JobFlowRole: |
+      "Also called instance profile and EC2 role. "
+    LogUri: |
+      "An S3 bucket location to which Amazon EMR writes logs files from a job flow."
+    Name: |
+      "A name for the Amazon EMR cluster."
+    ReleaseLabel: |
+      "The Amazon EMR software release label. A release is a set of software applications and components that you can install and configure on an Amazon EMR cluster.  If you specify the Applications property, you must specify this property."
+    ServiceRole: |
+      "The IAM role that Amazon EMR assumes to access AWS resources on your behalf. "
+    Tags: |
+      [
+        {
+          "Key" => "Name",
+          "Value" => "a cluster"
+        }
+      ]
+    VisibleToAllUsers: |
+      "Indicates whether the instances in the cluster are visible to all IAM users in the AWS account. default false"

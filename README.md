@@ -40,6 +40,8 @@ Example:
 - AWS::AutoScaling::ScalingPolicy
 - AWS::CloudFront::Distribution
 - AWS::CloudWatch::Alarm
+- AWS::CodeCommit::Repository
+- AWS::DirectoryService::SimpleAD
 - AWS::EC2::DHCPOptions
 - AWS::EC2::EIP
 - AWS::EC2::Instance
@@ -61,6 +63,9 @@ Example:
 - AWS::ECS::Cluster
 - AWS::ECS::Service
 - AWS::ECS::TaskDefinition
+- AWS::EMR::Cluster
+- AWS::EMR::InstanceGroupConfig
+- AWS::EMR::Step
 - AWS::ElastiCache::CacheCluster
 - AWS::ElastiCache::ParameterGroup
 - AWS::ElastiCache::ReplicationGroup

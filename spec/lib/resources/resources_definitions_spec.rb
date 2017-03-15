@@ -437,4 +437,10 @@ describe "resource definitions" do
     let(:logical_name) { "EMRStep" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS::DirectoryService::SimpleAD" do
+    let(:type) {"AWS::DirectoryService::SimpleAD"}
+    let(:logical_name) { "SimpleAD" }
+    it_behaves_like "general definition"
+  end
 end

@@ -443,4 +443,10 @@ describe "resource definitions" do
     let(:logical_name) { "SimpleAD" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS::Config::ConfigRule" do
+    let(:type) {"AWS::Config::ConfigRule"}
+    let(:logical_name) { "Rule" }
+    it_behaves_like "general definition"
+  end
 end

@@ -1,0 +1,29 @@
+AWS::Config::ConfigRule:
+  Properties:
+    ConfigRuleName: |
+      "rule"
+    Description: |
+      "desc"
+    InputParameters: |
+      {
+        "parameter-name" => "parameter-value"
+      }
+    MaximumExecutionFrequency: |
+      "One_Hour | Three_Hours | Six_Hours | Twelve_Hours | TwentyFour_Hours"
+    Scope: |
+      {
+        "ComplianceResourceId" => "The ID of an AWS resource that you want AWS Config to evaluate against a rule. If you specify an ID, you must also specify a resource type for the ComplianceResourceTypes property.",
+        "ComplianceResourceTypes" => ["The types of AWS resources that you want AWS Config to evaluate against the rule. If you specify the ComplianceResourceId property, specify only one resource type."],
+        "TagKey" => "The tag key that is applied to the AWS resources that you want AWS Config to evaluate against the rule.",
+        "TagValue" => "The tag value that is applied to the AWS resources that you want AWS Config to evaluate against the rule."
+      }
+    Source: |
+      {
+        "Owner" => "CUSTOM_LAMBDA | AWS",
+        "SourceDetails" => [{
+          "EventSource" => "aws.config",
+          "MessageType" => "ConfigurationItemChangeNotification|OversizedConfigurationItemChangeNotification|ScheduledNotification|ConfigurationSnapshotDeliveryCompleted"
+        }],
+        "SourceIdentifier" => "For AWS managed rules, the identifier of the rule. For customer managed rules, the Amazon Resource Name (ARN) of the rule's Lambda function."
+      }
+

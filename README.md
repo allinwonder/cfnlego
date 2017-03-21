@@ -41,6 +41,7 @@ Example:
 - AWS::CloudFront::Distribution
 - AWS::CloudWatch::Alarm
 - AWS::CodeCommit::Repository
+- AWS::Config::ConfigRule
 - AWS::DirectoryService::SimpleAD
 - AWS::EC2::DHCPOptions
 - AWS::EC2::EIP

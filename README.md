@@ -39,6 +39,7 @@ Example:
 - AWS::AutoScaling::LifecycleHook
 - AWS::AutoScaling::ScalingPolicy
 - AWS::CloudFront::Distribution
+- AWS::CloudTrail::Trail
 - AWS::CloudWatch::Alarm
 - AWS::CodeCommit::Repository
 - AWS::Config::ConfigRule
@@ -98,6 +99,7 @@ Example:
 - AWS::SNS::TopicPolicy
 - AWS::SQS::Queue
 - AWS::SQS::QueuePolicy
+- AWS::SSM::Document
 - AWS::WAF::ByteMatchSet
 - AWS::WAF::IPSet
 - AWS::WAF::Rule

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-find . ./lib/cfnlego/resources/ | grep yaml |cut -f5,6,7 -d/ | sed 's/.yaml//' | sed "s/\//::/g"| sort | uniq 
+find ./lib/cfnlego/resources/ -iname *.yaml  | cut -f6,7,8 -d/ | sed 's/.yaml//' | sed "s/\//::/g"| sort | uniq 

@@ -449,4 +449,16 @@ describe "resource definitions" do
     let(:logical_name) { "Rule" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS::SSM::Document" do
+    let(:type) {"AWS::SSM::Document"}
+    let(:logical_name) { "doc" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS::CloudTrail::Trail" do
+    let(:type) {"AWS::CloudTrail::Trail"}
+    let(:logical_name) { "trail" }
+    it_behaves_like "general definition"
+  end
 end

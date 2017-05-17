@@ -1,0 +1,19 @@
+AWS::CloudTrail::Trail:
+  Properties: 
+    CloudWatchLogsLogGroupArn: "\"arn:xxxx\""
+    CloudWatchLogsRoleArn: "\"arn:xxx\""
+    EnableLogFileValidation: true
+    IncludeGlobalServiceEvents: true
+    IsLogging: true
+    IsMultiRegionTrail: true
+    KMSKeyId: "\"kms-key-id\""
+    S3BucketName: "\"bucket-name\""
+    S3KeyPrefix: "\"prefix-name\""
+    SnsTopicName: "\"sns-topic-name\""
+    Tags: |
+      [
+        {
+          "Key" => "tag-key",
+          "Value" => "tag-value"
+        }
+      ]

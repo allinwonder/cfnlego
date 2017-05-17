@@ -1,0 +1,30 @@
+AWS::SSM::Document:
+  Properties: 
+    Content: |
+        {
+          "schemaVersion" => "1.2",
+            "description" => "Join instances to an AWS Directory Service domain.",
+            "parameters" => {
+              "directoryId" => {
+                "type" => "String",
+                "description" => "(Required) The ID of the AWS Directory Service directory."
+              },
+              "directoryName" => {
+                "type" => "String",
+                "description" => "(Required) The name of the directory; for example, test.example.com"
+              },
+              "dnsIpAddresses" => {
+                "type" => "StringList",
+                "default" => [ "1.1.1.1" ],
+                "description" => "(Optional) The IP addresses of the DNS servers in the directory. Required when DHCP is not configured. Learn more at http://docs.aws.amazon.com/directoryservice/latest/simple-ad/join_get_dns_addresses.html",
+                "allowedPattern" => "((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
+              }
+          }
+        }
+    ReceiveMessageWaitTimeSeconds: "\"Specifies the duration, in seconds, that the ReceiveMessage action call waits until a message is in the queue in order to include it in the response, as opposed to returning an empty response if a message is not yet available. You can specify an integer from 1 to 20. The short polling is used as the default or when you specify 0 for this property.\""
+    RedrivePolicy: |
+      {
+        "deadLetterTargetArn" => "The Amazon Resource Name (ARN) of the dead letter queue to which the messages are sent to after the maxReceiveCount value has been exceeded.",
+        "maxReceiveCount" => "The number of times a message is delivered to the source queue before being sent to the dead letter queue."
+      }  
+    VisibilityTimeout: "\"The length of time during which the queue will be unavailable once a message is delivered from the queue. This blocks other components from receiving the same message and gives the initial component time to process and delete the message from the queue.  Values must be from 0 to 43200 seconds (12 hours). If no value is specified, the default value of 30 seconds will be used.\""

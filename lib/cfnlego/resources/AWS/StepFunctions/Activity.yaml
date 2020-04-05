@@ -1,0 +1,3 @@
+AWS::StepFunctions::Activity:
+  Properties: 
+    Name: "\"A name for the activity.\""

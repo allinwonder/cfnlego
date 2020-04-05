@@ -1,0 +1,11 @@
+AWS::StepFunctions::StateMachine:
+  Properties: 
+    DefinitionString: "\"The Amazon States Language definition of the state machine.\""
+    Subscription: |
+      [
+        {
+           "Endpoint" => "http|https|@|phone-number|SQS Queue|EndpointArn of Mobile App/device|Lambda Arn",
+           "Protocol" => "http|https|email|email-json|sms|sqs|application|lambda"
+        }
+      ]
+    TopicName: "\"A name for the topic, optional\""

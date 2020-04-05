@@ -461,4 +461,16 @@ describe "resource definitions" do
     let(:logical_name) { "trail" }
     it_behaves_like "general definition"
   end
+
+  describe "AWS::StepFunctions::Activity" do
+    let(:type) {"AWS::StepFunctions::Activity"}
+    let(:logical_name) { "activity" }
+    it_behaves_like "general definition"
+  end
+
+  describe "AWS::StepFunctions::StateMachine" do
+    let(:type) {"AWS::StepFunctions::StateMachine"}
+    let(:logical_name) { "state_machine" }
+    it_behaves_like "general definition"
+  end
 end

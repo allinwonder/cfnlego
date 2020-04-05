@@ -3,6 +3,14 @@ cfnlego
 
 [![Build Status](https://travis-ci.org/allinwonder/cfnlego.svg)](https://travis-ci.org/allinwonder/cfnlego) [![Gem Version](https://badge.fury.io/rb/cfnlego.svg)](http://badge.fury.io/rb/cfnlego) [![Code Climate](https://codeclimate.com/github/allinwonder/cfnlego/badges/gpa.svg)](https://codeclimate.com/github/allinwonder/cfnlego)
 
+### Announcement
+
+Dear supporters, the `cfnlego` project has contributed the code into the be loved [cfndsl](https://github.com/cfndsl/cfndsl) project. 
+
+Now, you can use the `-g` option in `cfndsl` to generate the template.
+
+Thank you for your support, and enjoy building open source projects.
+
 ### Description
 
 cfnlego is built to quickly bootstrap CloudFormation development with cfndsl.

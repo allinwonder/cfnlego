@@ -4,7 +4,7 @@ GEM
     cfndsl (0.9.1)
     coderay (1.1.1)
     diff-lcs (1.2.5)
-    ffi (1.9.10)
+    ffi (1.12.2)
     formatador (0.2.5)
     guard (2.14.0)
       formatador (>= 0.2.4)
@@ -34,7 +34,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rake (11.2.2)
+    rake (12.3.3)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
@@ -64,7 +64,7 @@ DEPENDENCIES
   cfndsl
   guard
   guard-rspec
-  rake
+  rake (>= 12.3.3)
   rspec
   ruby-beautify
 
